@@ -223,7 +223,7 @@ class Application:
     def ajax(self):
         if (self.logic1 == 1):
 
-            self.bottom = Frame(root, width=vi3, height=220, bg='lightblue')
+            self.bottom = Frame(root, width=vi3, height=250, bg='lightblue')
             # self.bottom.pack(side=TOP)
             self.bottom.place(x=vi4, y=105)
 
@@ -245,40 +245,50 @@ class Application:
                                      bg='lightblue')
             self.tenbenhnhan.place(x=0, y=0)
 
-            self.tenbenhnhan = Label(self.bottom, text="Họ và tên:", font=('arial 10 bold'), fg='black',
+            self.tenbenhnhan = Label(self.bottom, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
                                      bg='lightblue')
-            self.tenbenhnhan.place(x=15, y=30)
+            self.tenbenhnhan.place(x=10, y=30)
 
             self.name_p = Entry(self.bottom, font=('arial 14 bold'), width=20)
-            self.name_p.place(x=85, y=30)
+            self.name_p.place(x=100, y=30)
             self.name_p.focus()
 
-            self.adr = Label(self.bottom, text="Địa chỉ:", font=('arial 10 bold'), fg='black', bg='lightblue')
-            self.adr.place(x=15, y=65)
+            self.adr = Label(self.bottom, text="Địa chỉ         :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr.place(x=10, y=65)
 
             self.adr_p = Entry(self.bottom, font=('arial 14 bold'), width=20)
-            self.adr_p.place(x=85, y=65)
+            self.adr_p.place(x=100, y=65)
 
-            self.tel = Label(self.bottom, text="Điện thoại:", font=('arial 10 bold'), fg='black', bg='lightblue')
-            self.tel.place(x=15, y=100)
+            self.tel = Label(self.bottom, text="Điện thoại    :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.tel.place(x=10, y=100)
             self.telw = Entry(self.bottom, font=('arial 14 bold'), width=20)
-            self.telw.place(x=85, y=100)
+            self.telw.place(x=100, y=100)
 
-            self.year_b = Label(self.bottom, text="Năm sinh:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            self.year_b.place(x=15, y=165)
+            self.year_b = Label(self.bottom, text="Mã BN          :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.year_b.place(x=10, y=135)
 
-            self.y_b = Entry(self.bottom, font=('arial 20 bold'), width=20)
-            self.y_b.place(x=5, y=190)
+            self.y_b = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.y_b.place(x=100, y=135)
+
+            self.sbh = Label(self.bottom, text="Số bảo hiểm:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.sbh.place(x=10, y=170)
+            self.nbh = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.nbh.place(x=100, y=170)
+
+            self.ghic = Label(self.bottom, text="Ghi chú   :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.ghic.place(x=10, y=205)
+            self.ghich = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.ghich.place(x=100, y=205)
 
             self.job = Label(self.bottom, text="Nghề nghiệp:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            self.job.place(x=330, y=20)
+            self.job.place(x=250, y=100)
             # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
             # self.jobw.place(x=320, y=30)
             test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên', 'nội trợ', 'kinh doanh','nhân viên văn phòng', 'kế toán')
 
             self.enter = AutocompleteEntry(self.bottom, font=('arial 20 bold'), width=16,textvariable=n)
             self.enter.set_completion_list(test_list)
-            self.enter.place(x=320, y=45)
+            self.enter.place(x=150, y=100)
 
             self.st = Label(self.bottom, text="Triệu chứng:", font=('arial 12 bold'), fg='black', bg='lightblue')
             self.st.place(x=330, y=90)
@@ -288,11 +298,6 @@ class Application:
             self.stom = AutocompleteEntry(self.bottom, font=('arial 20 bold'), width=16, textvariable=n1)
             self.stom.set_completion_list(test_list1)
             self.stom.place(x=320, y=115)
-
-            self.sbh = Label(self.bottom, text="Số bảo hiểm:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            self.sbh.place(x=330, y=165)
-            self.nbh = Entry(self.bottom, font=('arial 20 bold'), width=18)
-            self.nbh.place(x=320, y=190)
 
 
 

@@ -126,8 +126,10 @@ class Application:
 
         self.master = master
         self.logic1 = 1
-        self.logic2 = 1
+        self.logicc2 = 1
         self.logic3 = 1
+        self.logic4 = 1
+        self.logicc3 = 1
         load = Image.open("icon/nen.JPG")
         render = ImageTk.PhotoImage(load)
         img = Label(master, image=render)
@@ -157,25 +159,25 @@ class Application:
         self.button_2 = TkinterCustomButton(image=imageb2, width=vi2, height=vi1, command=self.ajax)
         self.button_2.place(x=30, y=(vi1)+5)
 
-        self.bt_st_form = TkinterCustomButton(image=imageb3, width=vi2, height=vi1, command=self.ajax)  # get_itemsdatabase)
+        self.bt_st_form = TkinterCustomButton(image=imageb3, width=vi2, height=vi1, command=self.aj111)  # get_itemsdatabase)
         self.bt_st_form.place(x=30, y=(vi1*2)+10)
 
         self.bt_patient = TkinterCustomButton(image=imageb4, width=vi2, height=vi1,command=self.endoscopy)
         self.bt_patient.place(x=30, y=(vi1*3)+15)
 
-        self.bt_endoscop = TkinterCustomButton(image=imageb5, width=vi2, height=vi1, command=self.createNewWindow)
+        self.bt_endoscop = TkinterCustomButton(image=imageb5, width=vi2, height=vi1, command=self.cd111)
         self.bt_endoscop.place(x=30, y=(vi1*4)+20)
 
         self.bt_exit1 = TkinterCustomButton(image=imageb6, width=vi2, height=vi1,command=self.quit)
         self.bt_exit1.place(x=30, y=(vi1*5)+25)
 
-        self.bt = TkinterCustomButton(image=imageb7, width=vi2, height=vi1, command=self.add_to_bn)
+        self.bt = TkinterCustomButton(image=imageb7, width=vi2, height=vi1, command=self.timkiem)
         self.bt.place(x=30, y=(vi1*6)+30)
 
-        self.bt = TkinterCustomButton(image=imageb8, width=vi2, height=vi1,command=self.add_to_bn)
+        self.bt = TkinterCustomButton(image=imageb8, width=vi2, height=vi1,command=self.infortab111)
         self.bt.place(x=30, y=(vi1*7)+35)
 
-        self.bt_e= TkinterCustomButton(image=imageb9, width=vi2, height=vi1, command=self.createNewWindow)
+        self.bt_e= TkinterCustomButton(image=imageb9, width=vi2, height=vi1, command=self.add_to_bn)
         self.bt_e.place(x=30, y=(vi1*8)+40)
 
         self.bt_exi= TkinterCustomButton(image=imageb10, width=vi2, height=vi1,command=self.quit)
@@ -222,16 +224,29 @@ class Application:
 
     def ajax(self):
         if (self.logic1 == 1):
+            in1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
+            in2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
+            in3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
+            in4 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
+            in5 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
+            in6 = int(root.winfo_screenheight() - vi1+380- (vi2*5)-220)
+            in7 = int(((vi1*9)+45)/30)
 
-            self.bottom = Frame(root, width=vi3, height=250, bg='lightblue')
+            self.bottom = Frame(root, width=vi3, height=250)#, bg='lightblue')
             # self.bottom.pack(side=TOP)
-            self.bottom.place(x=vi4, y=105)
+            self.bottom.place(x=vi4, y=vi1+50)
 
-            self.bottom1 = Frame(root, width=vi3, height=80, bg='yellow')
-            self.bottom1.place(x=vi4, y=340)
+            # self.bottom1 = Frame(root, width=vi3, height=80, bg='yellow')
+            # self.bottom1.place(x=vi4, y=400)
 
-            self.bottom2 = Frame(root, width=vi3, height=550, bg='lightblue')
-            self.bottom2.place(x=vi4, y=420)
+            self.bottom2 = Frame(root, width=vi3, height=in6, bg='lightblue')
+            self.bottom2.place(x=vi4, y=vi1+310)
+
+            load = Image.open("icon/nen.JPG")
+            render = ImageTk.PhotoImage(load)
+            img = Label(self.bottom2, image=render)
+            img.image = render
+            img.place(x=0, y=0)
 
             self.Top = Frame(self.bottom2, width=vi3, bd=2, relief=SOLID)
             self.Top.pack(side=TOP)
@@ -240,9 +255,16 @@ class Application:
             self.RightForm = Frame(self.MidFrame, width=vi3)
             self.RightForm.pack(side=RIGHT)
 
+            img = Label(self.bottom, image=render)
+            img.image = render
+            img.place(x=0, y=0)
 
-            self.tenbenhnhan = Label( self.bottom, text="THÔNG TIN BỆNH NHÂN:", font=('arial 12 bold'), fg='black',
-                                     bg='lightblue')
+
+            # img = Label(self.bottom1, image=render)
+            # img.image = render
+            # img.place(x=0, y=0)
+
+            self.tenbenhnhan = Label(self.bottom, text="THÔNG TIN BỆNH NHÂN:", font=('arial 12 bold'), fg='black')
             self.tenbenhnhan.place(x=0, y=0)
 
             self.tenbenhnhan = Label(self.bottom, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
@@ -264,11 +286,11 @@ class Application:
             self.telw = Entry(self.bottom, font=('arial 14 bold'), width=20)
             self.telw.place(x=100, y=100)
 
-            self.year_b = Label(self.bottom, text="Mã BN          :", font=('arial 10 bold'), fg='black', bg='lightblue')
-            self.year_b.place(x=10, y=135)
+            self.mbn = Label(self.bottom, text="Mã BN          :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.mbn.place(x=10, y=135)
 
-            self.y_b = Entry(self.bottom, font=('arial 14 bold'), width=20)
-            self.y_b.place(x=100, y=135)
+            self.y_bn = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.y_bn.place(x=100, y=135)
 
             self.sbh = Label(self.bottom, text="Số bảo hiểm:", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.sbh.place(x=10, y=170)
@@ -280,87 +302,731 @@ class Application:
             self.ghich = Entry(self.bottom, font=('arial 14 bold'), width=20)
             self.ghich.place(x=100, y=205)
 
-            self.job = Label(self.bottom, text="Nghề nghiệp:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            self.job.place(x=250, y=100)
+            self.year_b = Label(self.bottom, text="Năm sinh     :", font=('arial 10 bold'), fg='black',
+                                bg='lightblue')
+            self.year_b.place(x=340, y=30)
+
+            self.y_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.y_b.place(x=435, y=30)
+
+            self.job = Label(self.bottom, text="Nghề nghiệp:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.job.place(x=340, y=65)
             # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
             # self.jobw.place(x=320, y=30)
             test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên', 'nội trợ', 'kinh doanh','nhân viên văn phòng', 'kế toán')
 
-            self.enter = AutocompleteEntry(self.bottom, font=('arial 20 bold'), width=16,textvariable=n)
+            self.enter = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10,textvariable=n)
             self.enter.set_completion_list(test_list)
-            self.enter.place(x=150, y=100)
+            self.enter.place(x=435, y=65)
 
-            self.st = Label(self.bottom, text="Triệu chứng:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            self.st.place(x=330, y=90)
-            # self.stom = Entry(self.bottom, font=('arial 20 bold'), width=18)
-            # self.stom.place(x=320, y=100)
-            test_list1 = ('ho','sổ mũi','đau họng','sốt','đau tai','ù tai','mất tiếng')
-            self.stom = AutocompleteEntry(self.bottom, font=('arial 20 bold'), width=16, textvariable=n1)
-            self.stom.set_completion_list(test_list1)
-            self.stom.place(x=320, y=115)
+            self.gt = Label(self.bottom, text="Giới tính       :", font=('arial 10 bold'), fg='black',
+                                bg='lightblue')
+            self.gt.place(x=340, y=100)
 
+            self.gt_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.gt_b.place(x=435, y=100)
+
+            self.nm = Label(self.bottom, text="Nhóm máu   :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.nm.place(x=340, y=135)
+
+            self.nm_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.nm_b.place(x=435, y=135)
+
+            self.ditruyen = Label(self.bottom, text="Di truyền      :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.ditruyen.place(x=340, y=170)
+
+            self.ditruyen_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.ditruyen_b.place(x=435, y=170)
+
+            self.nm = Label(self.bottom, text="Bẩm sinh      :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.nm.place(x=340, y=205)
+
+            self.nm_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.nm_b.place(x=435, y=205)
+
+            # self.st = Label(self.bottom, text="Triệu chứng:", font=('arial 12 bold'), fg='black', bg='lightblue')
+            # self.st.place(x=330, y=90)
+            # # self.stom = Entry(self.bottom, font=('arial 20 bold'), width=18)
+            # # self.stom.place(x=320, y=100)
+            # test_list1 = ('ho','sổ mũi','đau họng','sốt','đau tai','ù tai','mất tiếng')
+            # self.stom = AutocompleteEntry(self.bottom, font=('arial 20 bold'), width=16, textvariable=n1)
+            # self.stom.set_completion_list(test_list1)
+            # self.stom.place(x=320, y=115)
+
+            self.tsb = Label(self.bottom, text="Tiền sử bệnh :", font=('arial 10 bold'), fg='black',
+                                bg='lightblue')
+            self.tsb.place(x=560, y=30)
+
+            self.tsb_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.tsb_b.place(x=660, y=30)
+
+            self.bhm = Label(self.bottom, text="Bệnh hay mắc:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.bhm.place(x=560, y=65)
+            # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
+            # self.jobw.place(x=320, y=30)
+            test_list = (
+            'tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên',
+            'nội trợ', 'kinh doanh', 'nhân viên văn phòng', 'kế toán')
+
+            self.bhn_m = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10, textvariable=n)
+            self.bhn_m.set_completion_list(test_list)
+            self.bhn_m.place(x=660, y=65)
+
+            self.du = Label(self.bottom, text="Dị ứng     :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.du.place(x=560, y=100)
+
+            self.du_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.du_b.place(x=660, y=100)
+
+            self.tq = Label(self.bottom, text="Thói quen SH  :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.tq.place(x=560, y=135)
+
+            self.tq_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.tq_b.place(x=660, y=135)
+
+            self.lsk = Label(self.bottom, text="Lịch sử KCB :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.lsk.place(x=560, y=170)
+
+            self.lsk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.lsk_b.place(x=660, y=170)
+
+            self.ppdk = Label(self.bottom, text="PP điều trị:", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.ppdk.place(x=560, y=205)
+
+            self.ppdk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.ppdk_b.place(x=660, y=205)
 
 
             # self.enteride = Entry(self.bottom, width=25, font=('arial 18 bold'), bg='lightblue')
             # self.enteride.place(x=800, y=175)
             # self.enteride.focus()
 
-            self.droplist = OptionMenu(self.bottom, c, 'NAM', 'NỮ')
-            self.droplist.pack()
-            self.menu = self.droplist.nametowidget(self.droplist.menuname)
-            self.menu.configure(font=('arial 20 bold'))
-            c.set('NAM')
-            self.droplist.config(width=10, font=('arial 18 bold'))
-            self.droplist.place(x=610, y=100)
+            # self.droplist = OptionMenu(self.bottom, c, 'NAM', 'NỮ')
+            # self.droplist.pack()
+            # self.menu = self.droplist.nametowidget(self.droplist.menuname)
+            # self.menu.configure(font=('arial 20 bold'))
+            # c.set('NAM')
+            # self.droplist.config(width=10, font=('arial 18 bold'))
+            # self.droplist.place(x=610, y=100)
 
-            self.seachinfo = Button(self.bottom1, text="Tìm kiếm", width=12, height=2, font=('arial 14 bold'),
-                                    bg='orange',
-                                    command=self.Search)
-            self.seachinfo.place(x=640, y=10)
-
-            self.name_info = Label(self.bottom1, text="Tên:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            self.name_info.place(x=5, y=10)
-
-            self.name_infos = Entry(self.bottom1, width=18, font=('arial 18 bold'), bg='white')
-            self.name_infos.place(x=5, y=38)
-
-            self.job_s = Label(self.bottom1, text="Nghề nghiệp:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            self.job_s.place(x=245, y=10)
-            self.from_jobs = Entry(self.bottom1, font=('arial 18 bold'), width=12)
-            self.from_jobs.place(x=245, y=38)
-
-            self.aadd_s = Label(self.bottom1, text="Địa Chỉ:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            self.aadd_s.place(x=410, y=10)
-            self.from_addss = Entry(self.bottom1, font=('arial 18 bold'), width=10)
-            self.from_addss.place(x=410, y=38)
-
-            self.born_s2 = Label(self.bottom1, text="Năm sinh:", font=('arial 10 bold'), fg='black', bg='lightblue')
-            self.born_s2.place(x=550, y=10)
-            self.born_agess = Entry(self.bottom1, font=('arial 18 bold'), width=6)
-            self.born_agess.place(x=550, y=38)
+            # self.seachinfo = Button(self.bottom1, text="Tìm kiếm", width=12, height=2, font=('arial 14 bold'),
+            #                         bg='orange',
+            #                         command=self.Search)
+            # self.seachinfo.place(x=640, y=10)
+            #
+            # self.name_info = Label(self.bottom1, text="Tên:", font=('arial 12 bold'), fg='black', bg='lightblue')
+            # self.name_info.place(x=5, y=10)
+            #
+            # self.name_infos = Entry(self.bottom1, width=18, font=('arial 18 bold'), bg='white')
+            # self.name_infos.place(x=5, y=38)
+            #
+            # self.job_s = Label(self.bottom1, text="Nghề nghiệp:", font=('arial 12 bold'), fg='black', bg='lightblue')
+            # self.job_s.place(x=245, y=10)
+            # self.from_jobs = Entry(self.bottom1, font=('arial 18 bold'), width=12)
+            # self.from_jobs.place(x=245, y=38)
+            #
+            # self.aadd_s = Label(self.bottom1, text="Địa Chỉ:", font=('arial 12 bold'), fg='black', bg='lightblue')
+            # self.aadd_s.place(x=410, y=10)
+            # self.from_addss = Entry(self.bottom1, font=('arial 18 bold'), width=10)
+            # self.from_addss.place(x=410, y=38)
+            #
+            # self.born_s2 = Label(self.bottom1, text="Năm sinh:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            # self.born_s2.place(x=550, y=10)
+            # self.born_agess = Entry(self.bottom1, font=('arial 18 bold'), width=6)
+            # self.born_agess.place(x=550, y=38)
 
             self.scrollbarx = Scrollbar(self.RightForm, orient=HORIZONTAL)
             self.scrollbary = Scrollbar(self.RightForm, orient=VERTICAL)
-            self.tree = ttk.Treeview(self.RightForm, columns=("Id", "Name", "Job", "Address", "Age"),
-                                     selectmode="extended",
-                                     height=400, yscrollcommand=self.scrollbary.set, xscrollcommand=self.scrollbarx.set)
+            self.tree = ttk.Treeview(self.RightForm, columns=("TT", "Tên bệnh nhân","Điện Thoại",  "Nghề nghiệp",  "Năm sinh","Bệnh án", "Nội Soi", "Chẩn Đoán", "Ngày Khám", "Chọn"),
+                                     height=in7,selectmode="extended", yscrollcommand=self.scrollbary.set, xscrollcommand=self.scrollbarx.set)
             self.scrollbary.config(command=self.tree.yview)
             self.scrollbary.pack(side=RIGHT, fill=Y)
             self.scrollbarx.config(command=self.tree.xview)
-            self.scrollbarx.pack(side=BOTTOM, fill=X)
+            self.scrollbarx.pack(side=TOP, fill=X)
+
             self.tree.column('#0', stretch=NO, minwidth=0, width=0)
-            self.tree.column('#1', stretch=NO, minwidth=0, width=50)
-            self.tree.column('#2', stretch=NO, minwidth=0, width=300)
-            self.tree.column('#3', stretch=NO, minwidth=0, width=160)
-            self.tree.column('#4', stretch=NO, minwidth=0, width=160)
+            self.tree.column('#1', stretch=NO, minwidth=0, width=in1)
+            self.tree.column('#2', stretch=NO, minwidth=0, width=in2)
+            self.tree.column('#3', stretch=NO, minwidth=0, width=in3)
+            self.tree.column('#4', stretch=NO, minwidth=0, width=in4)
+            self.tree.column('#5', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#6', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#7', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#8', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#9', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#10', stretch=NO, minwidth=0, width=in5)
 
             self.tree.pack()
-            self.tree.heading('Id', text="Id", anchor=W)
-            self.tree.heading('Name', text="Name", anchor=W)
-            self.tree.heading('Job', text="Job", anchor=W)
-            self.tree.heading('Address', text="Address", anchor=W)
-            self.tree.heading('Age', text="Age", anchor=W)
+            self.tree.heading('TT', text="TT", anchor=W)
+            self.tree.heading('Tên bệnh nhân', text="Tên bệnh nhân", anchor=W)
+            self.tree.heading('Điện Thoại', text="Điện Thoại", anchor=W)
+            self.tree.heading('Nghề nghiệp', text="Nghề nghiệp", anchor=W)
+            self.tree.heading('Năm sinh', text="Năm sinh", anchor=W)
+            self.tree.heading('Bệnh án', text="Bệnh án", anchor=W)
+            self.tree.heading('Nội Soi', text="Nội Soi", anchor=W)
+            self.tree.heading('Chẩn Đoán', text="Chẩn Đoán", anchor=W)
+            self.tree.heading('Ngày Khám', text="Ngày Khám", anchor=W)
+            self.tree.heading('Chọn', text="Chọn", anchor=W)
+
+            conn = sqlite3.connect("db_member.db")
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM `member`")
+            fetch = cursor.fetchall()
+            for data in fetch:
+                self.tree.insert('', 'end', values=(data))
+            cursor.close()
+            conn.close()
             self.logic1 = 2
+
+    def timkiem(self):
+        if (self.logic1 == 1):
+            in1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
+            in2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
+            in3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
+            in4 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
+            in5 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
+            in6 = int(root.winfo_screenheight() - vi1+380- (vi2*5)-220)
+            in7 = int(((vi1*9)+45)/30)
+
+            self.bottom = Frame(root, width=vi3, height=250)#, bg='lightblue')
+            # self.bottom.pack(side=TOP)
+            self.bottom.place(x=vi4, y=vi1+50)
+
+            # self.bottom1 = Frame(root, width=vi3, height=80, bg='yellow')
+            # self.bottom1.place(x=vi4, y=400)
+
+            self.bottom2 = Frame(root, width=vi3, height=in6, bg='lightblue')
+            self.bottom2.place(x=vi4, y=vi1+310)
+
+            load = Image.open("icon/nen.JPG")
+            render = ImageTk.PhotoImage(load)
+            img = Label(self.bottom2, image=render)
+            img.image = render
+            img.place(x=0, y=0)
+
+            self.Top = Frame(self.bottom2, width=vi3, bd=2, relief=SOLID)
+            self.Top.pack(side=TOP)
+            self.MidFrame = Frame(self.bottom2, width=vi3)
+            self.MidFrame.pack(side=TOP)
+            self.RightForm = Frame(self.MidFrame, width=vi3)
+            self.RightForm.pack(side=RIGHT)
+
+            img = Label(self.bottom, image=render)
+            img.image = render
+            img.place(x=0, y=0)
+
+
+            # img = Label(self.bottom1, image=render)
+            # img.image = render
+            # img.place(x=0, y=0)
+
+            # self.tenbenhnhan = Label(self.bottom, text="THÔNG TIN BỆNH NHÂN:", font=('arial 12 bold'), fg='black')
+            # self.tenbenhnhan.place(x=0, y=0)
+
+            self.tenbenhnhan = Label(self.bottom, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
+                                     bg='lightblue')
+            self.tenbenhnhan.place(x=10, y=30)
+
+            self.name_p = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.name_p.place(x=100, y=30)
+            self.name_p.focus()
+
+            self.adr = Label(self.bottom, text="Địa chỉ      :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr.place(x=10, y=65)
+
+            self.adr_p = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.adr_p.place(x=100, y=65)
+
+            self.tel = Label(self.bottom, text="Điện thoại    :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.tel.place(x=10, y=100)
+            self.telw = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.telw.place(x=100, y=100)
+
+            self.mbn = Label(self.bottom, text="Nghề nghiệp:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.mbn.place(x=10, y=135)
+
+            self.y_bn = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.y_bn.place(x=100, y=135)
+
+            self.sbh = Label(self.bottom, text="Đơn vị C.tác", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.sbh.place(x=10, y=170)
+            self.nbh = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.nbh.place(x=100, y=170)
+
+            self.ghic = Label(self.bottom, text=" Bs.chỉ định  :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.ghic.place(x=10, y=205)
+            self.ghich = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.ghich.place(x=100, y=205)
+
+            self.year_b = Label(self.bottom, text="Số phiếu     :", font=('arial 10 bold'), fg='black',
+                                bg='lightblue')
+            self.year_b.place(x=340, y=30)
+
+            self.y_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.y_b.place(x=435, y=30)
+
+            self.job = Label(self.bottom, text="Số bảo hiểm:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.job.place(x=340, y=65)
+            # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
+            # self.jobw.place(x=320, y=30)
+            test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên', 'nội trợ', 'kinh doanh','nhân viên văn phòng', 'kế toán')
+
+            self.enter = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10,textvariable=n)
+            self.enter.set_completion_list(test_list)
+            self.enter.place(x=435, y=65)
+
+            self.gt = Label(self.bottom, text="tiền sử bệnh :", font=('arial 10 bold'), fg='black',
+                                bg='lightblue')
+            self.gt.place(x=340, y=100)
+
+            self.gt_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.gt_b.place(x=435, y=100)
+
+            self.nm = Label(self.bottom, text="Dị ứng  :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.nm.place(x=340, y=135)
+
+            self.nm_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.nm_b.place(x=435, y=135)
+
+            self.ditruyen = Label(self.bottom, text="Lí do khám :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.ditruyen.place(x=340, y=170)
+
+            self.ditruyen_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.ditruyen_b.place(x=435, y=170)
+
+            self.nm = Label(self.bottom, text="Ghi chú   :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.nm.place(x=340, y=205)
+
+            self.nm_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.nm_b.place(x=435, y=205)
+
+            # self.st = Label(self.bottom, text="Triệu chứng:", font=('arial 12 bold'), fg='black', bg='lightblue')
+            # self.st.place(x=330, y=90)
+            # # self.stom = Entry(self.bottom, font=('arial 20 bold'), width=18)
+            # # self.stom.place(x=320, y=100)
+            # test_list1 = ('ho','sổ mũi','đau họng','sốt','đau tai','ù tai','mất tiếng')
+            # self.stom = AutocompleteEntry(self.bottom, font=('arial 20 bold'), width=16, textvariable=n1)
+            # self.stom.set_completion_list(test_list1)
+            # self.stom.place(x=320, y=115)
+
+            self.tsb = Label(self.bottom, text="Năm sinh :", font=('arial 10 bold'), fg='black',
+                                bg='lightblue')
+            self.tsb.place(x=560, y=30)
+
+            self.tsb_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.tsb_b.place(x=660, y=30)
+
+            self.bhm = Label(self.bottom, text="Giới tính:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.bhm.place(x=560, y=65)
+            # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
+            # self.jobw.place(x=320, y=30)
+            test_list = (
+            'tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên',
+            'nội trợ', 'kinh doanh', 'nhân viên văn phòng', 'kế toán')
+
+            self.bhn_m = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10, textvariable=n)
+            self.bhn_m.set_completion_list(test_list)
+            self.bhn_m.place(x=660, y=65)
+
+            self.du = Label(self.bottom, text="Nhóm máu   :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.du.place(x=560, y=100)
+
+            self.du_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.du_b.place(x=660, y=100)
+
+            self.tq = Label(self.bottom, text="Di truyền  :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.tq.place(x=560, y=135)
+
+            self.tq_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.tq_b.place(x=660, y=135)
+
+            self.lsk = Label(self.bottom, text="Lần khám :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.lsk.place(x=560, y=170)
+
+            self.lsk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.lsk_b.place(x=660, y=170)
+
+            self.ppdk = Label(self.bottom, text="T lần khám:", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.ppdk.place(x=560, y=205)
+
+            self.ppdk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.ppdk_b.place(x=660, y=205)
+
+
+            # self.enteride = Entry(self.bottom, width=25, font=('arial 18 bold'), bg='lightblue')
+            # self.enteride.place(x=800, y=175)
+            # self.enteride.focus()
+
+            # self.droplist = OptionMenu(self.bottom, c, 'NAM', 'NỮ')
+            # self.droplist.pack()
+            # self.menu = self.droplist.nametowidget(self.droplist.menuname)
+            # self.menu.configure(font=('arial 20 bold'))
+            # c.set('NAM')
+            # self.droplist.config(width=10, font=('arial 18 bold'))
+            # self.droplist.place(x=610, y=100)
+
+            # self.seachinfo = Button(self.bottom1, text="Tìm kiếm", width=12, height=2, font=('arial 14 bold'),
+            #                         bg='orange',
+            #                         command=self.Search)
+            # self.seachinfo.place(x=640, y=10)
+            #
+            # self.name_info = Label(self.bottom1, text="Tên:", font=('arial 12 bold'), fg='black', bg='lightblue')
+            # self.name_info.place(x=5, y=10)
+            #
+            # self.name_infos = Entry(self.bottom1, width=18, font=('arial 18 bold'), bg='white')
+            # self.name_infos.place(x=5, y=38)
+            #
+            # self.job_s = Label(self.bottom1, text="Nghề nghiệp:", font=('arial 12 bold'), fg='black', bg='lightblue')
+            # self.job_s.place(x=245, y=10)
+            # self.from_jobs = Entry(self.bottom1, font=('arial 18 bold'), width=12)
+            # self.from_jobs.place(x=245, y=38)
+            #
+            # self.aadd_s = Label(self.bottom1, text="Địa Chỉ:", font=('arial 12 bold'), fg='black', bg='lightblue')
+            # self.aadd_s.place(x=410, y=10)
+            # self.from_addss = Entry(self.bottom1, font=('arial 18 bold'), width=10)
+            # self.from_addss.place(x=410, y=38)
+            #
+            # self.born_s2 = Label(self.bottom1, text="Năm sinh:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            # self.born_s2.place(x=550, y=10)
+            # self.born_agess = Entry(self.bottom1, font=('arial 18 bold'), width=6)
+            # self.born_agess.place(x=550, y=38)
+
+            self.scrollbarx = Scrollbar(self.RightForm, orient=HORIZONTAL)
+            self.scrollbary = Scrollbar(self.RightForm, orient=VERTICAL)
+            self.tree = ttk.Treeview(self.RightForm, columns=("TT", "Tên bệnh nhân","Điện Thoại",  "Nghề nghiệp",  "Năm sinh","Bệnh án", "Nội Soi", "Chẩn Đoán", "Ngày Khám", "Chọn"),
+                                     height=in7,selectmode="extended", yscrollcommand=self.scrollbary.set, xscrollcommand=self.scrollbarx.set)
+            self.scrollbary.config(command=self.tree.yview)
+            self.scrollbary.pack(side=RIGHT, fill=Y)
+            self.scrollbarx.config(command=self.tree.xview)
+            self.scrollbarx.pack(side=TOP, fill=X)
+
+            self.tree.column('#0', stretch=NO, minwidth=0, width=0)
+            self.tree.column('#1', stretch=NO, minwidth=0, width=in1)
+            self.tree.column('#2', stretch=NO, minwidth=0, width=in2)
+            self.tree.column('#3', stretch=NO, minwidth=0, width=in3)
+            self.tree.column('#4', stretch=NO, minwidth=0, width=in4)
+            self.tree.column('#5', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#6', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#7', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#8', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#9', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#10', stretch=NO, minwidth=0, width=in5)
+
+            self.tree.pack()
+            self.tree.heading('TT', text="TT", anchor=W)
+            self.tree.heading('Tên bệnh nhân', text="Tên bệnh nhân", anchor=W)
+            self.tree.heading('Điện Thoại', text="Điện Thoại", anchor=W)
+            self.tree.heading('Nghề nghiệp', text="Nghề nghiệp", anchor=W)
+            self.tree.heading('Năm sinh', text="Năm sinh", anchor=W)
+            self.tree.heading('Bệnh án', text="Bệnh án", anchor=W)
+            self.tree.heading('Nội Soi', text="Nội Soi", anchor=W)
+            self.tree.heading('Chẩn Đoán', text="Chẩn Đoán", anchor=W)
+            self.tree.heading('Ngày Khám', text="Ngày Khám", anchor=W)
+            self.tree.heading('Chọn', text="Chọn", anchor=W)
+
+            conn = sqlite3.connect("db_member.db")
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM `member`")
+            fetch = cursor.fetchall()
+            for data in fetch:
+                self.tree.insert('', 'end', values=(data))
+            cursor.close()
+            conn.close()
+            self.logic1 = 2
+
+
+    def cd111(self):
+        if (self.logicc3 == 1):
+            in1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
+            in2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
+            in3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
+            in4 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
+            in5 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
+            in6 = int(root.winfo_screenheight() - vi1 + 380 - (vi2 * 5) - 220)
+            in7 = int(((vi1 * 9) + 45) / 30)
+
+            self.bottom = Frame(root, width=vi3, height=root.winfo_screenheight())  # , bg='lightblue')
+            # self.bottom.pack(side=TOP)
+            self.bottom.place(x=vi4, y=vi1 + 50)
+
+
+            load = Image.open("icon/nen.JPG")
+            render = ImageTk.PhotoImage(load)
+
+            img = Label(self.bottom, image=render)
+            img.image = render
+            img.place(x=0, y=0)
+
+            # img = Label(self.bottom1, image=render)
+            # img.image = render
+            # img.place(x=0, y=0)
+
+            self.tenbenhnhan = Label(self.bottom, text="Chẩn đoán :", font=('arial 10 bold'), fg='black',
+                                     bg='lightblue')
+            self.tenbenhnhan.place(x=20, y=40)
+
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=140, y=30)
+            self.name_p.focus()
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=380, y=30)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=620, y=30)
+            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68,height=1, fg='black', bg='gray70')
+            self.adr.place(x=140, y=55)
+
+            self.adr = Label(self.bottom, text="Đánh giá :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr.place(x=20, y=90)
+            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p.place(x=140, y=90)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=380, y=90)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=620, y=90)
+            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black',bg='gray70')
+            self.adr.place(x=140, y=115)
+
+            self.adr = Label(self.bottom, text="Hướng diều trị:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr.place(x=20, y=150)
+            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p.place(x=140, y=150)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=380, y=150)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=620, y=150)
+            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr.place(x=140, y=175)
+
+            self.adr = Label(self.bottom, text="Lời dặn bác sĩ:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr.place(x=20, y=210)
+            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p.place(x=140, y=210)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=380, y=210)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=620, y=210)
+            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr.place(x=140, y=235)
+
+            self.adr = Label(self.bottom, text="Đơn thuốc:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr.place(x=20, y=270)
+            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p.place(x=140, y=270)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=380, y=270)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=620, y=270)
+            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr.place(x=140, y=295)
+
+            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p.place(x=140, y=325)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=380, y=325)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=620, y=325)
+            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr.place(x=140, y=350)
+
+            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p.place(x=140, y=380)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=380, y=380)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=620, y=380)
+            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr.place(x=140, y=405)
+
+            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p.place(x=140, y=435)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=380, y=435)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=620, y=435)
+            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr.place(x=140, y=460)
+
+            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p.place(x=140, y=490)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=380, y=490)
+            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p.place(x=620, y=490)
+            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr.place(x=140, y=515)
+
+            self.logicc3 = 2
+
+    def aj111(self):
+        if (self.logicc2 == 1):
+            i1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
+            i2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
+            i3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
+            i4 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
+            i5 = int(root.winfo_screenheight() - vi1+380 - (vi2*5)-220)
+            i6 = int(((vi1*9)+45)/30)
+
+            self.bottomc1 = Frame(root, width=vi3, height=180)#, bg='lightblue')
+            # self.bottom.pack(side=TOP)
+            self.bottomc1.place(x=vi4, y=vi1+50)
+
+            # self.bottom1 = Frame(root, width=vi3, height=80, bg='yellow')
+            # self.bottom1.place(x=vi4, y=400)
+
+            self.bottomc2 = Frame(root, width=vi3, height=i5, bg='lightblue')
+            self.bottomc2.place(x=vi4, y=vi1+240)
+
+            load = Image.open("icon/nen.JPG")
+            render = ImageTk.PhotoImage(load)
+            img = Label(self.bottomc2, image=render)
+            img.image = render
+            img.place(x=0, y=0)
+
+            self.Top = Frame(self.bottomc2, width=vi3, bd=2, relief=SOLID)
+            self.Top.pack(side=TOP)
+            self.MidFrame = Frame(self.bottomc2, width=vi3)
+            self.MidFrame.pack(side=TOP)
+            self.RightForm = Frame(self.MidFrame, width=vi3)
+            self.RightForm.pack(side=RIGHT)
+
+            img = Label(self.bottomc1, image=render)
+            img.image = render
+            img.place(x=0, y=0)
+
+
+            # img = Label(self.bottom1, image=render)
+            # img.image = render
+            # img.place(x=0, y=0)
+
+            self.tenbenhnhan = Label(self.bottomc1, text="THÔNG TIN BỆNH NHÂN:", font=('arial 12 bold'), fg='black')
+            self.tenbenhnhan.place(x=0, y=0)
+
+            self.tenbenhnhan = Label(self.bottomc1, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
+                                     bg='lightblue')
+            self.tenbenhnhan.place(x=10, y=30)
+
+            self.name_p = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.name_p.place(x=100, y=30)
+            self.name_p.focus()
+
+            self.adr = Label(self.bottomc1, text="Địa chỉ         :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr.place(x=10, y=65)
+
+            self.adr_p = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.adr_p.place(x=100, y=65)
+
+            self.tel = Label(self.bottomc1, text="Điện thoại    :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.tel.place(x=10, y=100)
+            self.telw = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.telw.place(x=100, y=100)
+
+            self.mbn = Label(self.bottomc1, text="Mã BN          :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.mbn.place(x=10, y=135)
+
+            self.y_bn = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.y_bn.place(x=100, y=135)
+
+
+
+            self.year_b = Label(self.bottomc1, text="Năm sinh       :", font=('arial 10 bold'), fg='black',
+                                bg='lightblue')
+            self.year_b.place(x=400, y=30)
+
+            self.y_b = Entry(self.bottomc1, font=('arial 14 bold'), width=10)
+            self.y_b.place(x=495, y=30)
+
+            self.year_b = Label(self.bottomc1, text="Số phiếu:", font=('arial 10 bold'), fg='black',
+                                bg='lightblue')
+            self.year_b.place(x=400, y=30)
+
+            self.y_b = Entry(self.bottomc1, font=('arial 14 bold'), width=10)
+            self.y_b.place(x=495, y=30)
+            self.year_b = Label(self.bottomc1, text="Khám lần :", font=('arial 10 bold'), fg='black',
+                                bg='lightblue')
+            self.year_b.place(x=615, y=30)
+            self.y_b3 = Entry(self.bottomc1, font=('arial 14 bold'), width=7)
+            self.y_b3.place(x=690, y=30)
+
+            self.job = Label(self.bottomc1, text="Nghề nghiệp :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.job.place(x=400, y=65)
+            # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
+            # self.jobw.place(x=320, y=30)
+            test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên', 'nội trợ', 'kinh doanh','nhân viên văn phòng', 'kế toán')
+
+            self.enter = AutocompleteEntry(self.bottomc1, font=('arial 14 bold'), width=25,textvariable=n)
+            self.enter.set_completion_list(test_list)
+            self.enter.place(x=495, y=65)
+
+            self.gt = Label(self.bottomc1, text="Giới tính        :", font=('arial 10 bold'), fg='black',
+                                bg='lightblue')
+            self.gt.place(x=400, y=100)
+
+            self.gt_b = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.gt_b.place(x=495, y=100)
+
+            self.gt = Label(self.bottomc1, text="Giới tính        :", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.gt.place(x=400, y=135)
+
+            self.gt_b = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.gt_b.place(x=495, y=135)
+
+            self.scrollbarx = Scrollbar(self.RightForm, orient=HORIZONTAL)
+            self.scrollbary = Scrollbar(self.RightForm, orient=VERTICAL)
+            self.tree = ttk.Treeview(self.RightForm, columns=("TT", "Tên bệnh nhân","Điện Thoại",  "Nghề nghiệp",  "Năm sinh","Bệnh án", "Nội Soi", "Chẩn Đoán", "Ngày Khám", "Chọn"),
+                                     height=i6,selectmode="extended", yscrollcommand=self.scrollbary.set, xscrollcommand=self.scrollbarx.set)
+            self.scrollbary.config(command=self.tree.yview)
+            self.scrollbary.pack(side=RIGHT, fill=Y)
+            self.scrollbarx.config(command=self.tree.xview)
+            self.scrollbarx.pack(side=TOP, fill=X)
+
+            self.tree.column('#0', stretch=NO, minwidth=0, width=0)
+            self.tree.column('#1', stretch=NO, minwidth=0, width=i1)
+            self.tree.column('#2', stretch=NO, minwidth=0, width=i2)
+            self.tree.column('#3', stretch=NO, minwidth=0, width=i3)
+            self.tree.column('#4', stretch=NO, minwidth=0, width=i4)
+            self.tree.column('#5', stretch=NO, minwidth=0, width=i4)
+            self.tree.column('#6', stretch=NO, minwidth=0, width=i4)
+            self.tree.column('#7', stretch=NO, minwidth=0, width=i4)
+            self.tree.column('#8', stretch=NO, minwidth=0, width=i4)
+            self.tree.column('#9', stretch=NO, minwidth=0, width=i4)
+            self.tree.column('#10', stretch=NO, minwidth=0, width=i4)
+
+            self.tree.pack()
+            self.tree.heading('TT', text="TT", anchor=W)
+            self.tree.heading('Tên bệnh nhân', text="Tên bệnh nhân", anchor=W)
+            self.tree.heading('Điện Thoại', text="Điện Thoại", anchor=W)
+            self.tree.heading('Nghề nghiệp', text="Nghề nghiệp", anchor=W)
+            self.tree.heading('Năm sinh', text="Năm sinh", anchor=W)
+            self.tree.heading('Bệnh án', text="Bệnh án", anchor=W)
+            self.tree.heading('Nội Soi', text="Nội Soi", anchor=W)
+            self.tree.heading('Chẩn Đoán', text="Chẩn Đoán", anchor=W)
+            self.tree.heading('Ngày Khám', text="Ngày Khám", anchor=W)
+            self.tree.heading('Chọn', text="Chọn", anchor=W)
+
+            conn = sqlite3.connect("db_member.db")
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM `member`")
+            fetch = cursor.fetchall()
+            for data in fetch:
+                self.tree.insert('', 'end', values=(data))
+            cursor.close()
+            conn.close()
+            self.logicc2 = 2
 
     def Deletedata(self):
 
@@ -411,7 +1077,7 @@ class Application:
 
         self.right.destroy()
         self.bottom.destroy()
-        self.bottom1.destroy()
+        # self.bottom1.destroy()
         self.bottom2.destroy()
         self.logic1 = 1
 
@@ -506,14 +1172,12 @@ class Application:
             self.scrollbarx = Scrollbar(self.rightw2, orient=HORIZONTAL)
             self.scrollbary = Scrollbar(self.rightw2, orient=VERTICAL)
             self.tree1 = ttk.Treeview(self.rightw2, columns=("Id", "Phòng khám", "Bác sĩ", "Địa chỉ"),
-                                      selectmode="extended",
-                                      height=400, yscrollcommand=self.scrollbary.set,
-                                      xscrollcommand=self.scrollbarx.set)
+                                      selectmode="extended", yscrollcommand=self.scrollbary.set,xscrollcommand=self.scrollbarx.set)
             self.scrollbary.config(command=self.tree1.yview)
             self.scrollbary.pack(side=RIGHT, fill=Y)
             self.scrollbarx.config(command=self.tree1.xview)
             self.scrollbarx.pack(side=BOTTOM, fill=X)
-            self.tree1.column('#0', stretch=NO, minwidth=0, width=0)
+            self.tree1.column('#0', stretch=NO, minwidth=0, width=50)
             self.tree1.column('#1', stretch=NO, minwidth=0, width=20)
             self.tree1.column('#2', stretch=NO, minwidth=0, width=180)
             self.tree1.column('#3', stretch=NO, minwidth=0, width=120)
@@ -1033,6 +1697,346 @@ class Application:
             self.tree1.insert('', 'end', values=(data))
         cursor.close()
         conn.close()
+
+    def infortab111(self, *args, **kwargs):
+        class Window2(QtWidgets.QDialog, Ui_Form):  # <===
+
+
+            def __init__(self):
+                super().__init__()
+                # root.winfo_screenwidth(),  root.winfo_screenheight()
+                self.title = "Print Window"
+                self.top = 0
+                self.left = 0
+                self.width = int(root.winfo_screenwidth())
+                self.height = int(root.winfo_screenheight())
+
+                label = QLabel(self)
+                pixmap = QPixmap('icon/nen.JPG')
+                label.setPixmap(pixmap)
+                self.resize(pixmap.width(), pixmap.height())
+
+                self.pushButton = QPushButton('', self)
+                self.pushButton.setGeometry(QtCore.QRect(25, 10, 180, 60))
+                self.pushButton.setIcon(QIcon('icon/ic.JPG'))
+                self.pushButton.setIconSize(QtCore.QSize(180, 70))
+
+                self.pushButton = QPushButton('', self)
+                self.pushButton.setGeometry(QtCore.QRect(35, (vi1)+20, 150,55))
+                # self.pushButton.setToolTip("<h3>Start Print</h3>")
+                self.pushButton.setIcon(QIcon('icon/tenthietbi.JPG'))
+                self.pushButton.setIconSize(QtCore.QSize(150, 70))
+
+                font = QFont('Times', 16)
+                self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1)+25, 550, 45))
+                self.lineEdit_3.setObjectName("lineEdit_3")
+                self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                self.lineEdit_3.setFont(font)
+
+                self.pushButton2 = QPushButton("", self)
+                self.pushButton2.setGeometry(QtCore.QRect(35, (vi1*2)+20, 150, 55))
+                # self.pushButton2.setToolTip("<h3>Close</h3>")
+                self.pushButton2.setIcon(QIcon('icon/mode.JPG'))
+                self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1*2) + 25, 550, 45))
+                self.lineEdit_3.setObjectName("lineEdit_3")
+                self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                self.lineEdit_3.setFont(font)
+
+                self.pushButton2 = QPushButton("", self)
+                self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 3) + 20, 150, 55))
+                # self.pushButton2.setToolTip("<h3>Close</h3>")
+                self.pushButton2.setIcon(QIcon('icon/version.JPG'))
+                self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 3) + 25, 550, 45))
+                self.lineEdit_3.setObjectName("lineEdit_3")
+                self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                self.lineEdit_3.setFont(font)
+
+                self.pushButton2 = QPushButton("", self)
+                self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 4) + 20, 150, 55))
+                # self.pushButton2.setToolTip("<h3>Close</h3>")
+                self.pushButton2.setIcon(QIcon('icon/soserial.JPG'))
+                self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 4) + 25, 550, 45))
+                self.lineEdit_3.setObjectName("lineEdit_3")
+                self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                self.lineEdit_3.setFont(font)
+
+                self.pushButton2 = QPushButton("", self)
+                self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 5) + 20, 150, 55))
+                # self.pushButton2.setToolTip("<h3>Close</h3>")
+                self.pushButton2.setIcon(QIcon('icon/khachhang.JPG'))
+                self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 5) + 25, 550, 45))
+                self.lineEdit_3.setObjectName("lineEdit_3")
+                self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                self.lineEdit_3.setFont(font)
+
+
+                self.pushButton2 = QPushButton("", self)
+                self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 6) + 20, 150, 55))
+                # self.pushButton2.setToolTip("<h3>Close</h3>")
+                self.pushButton2.setIcon(QIcon('icon/ngaybatdau.JPG'))
+                self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 6) + 25, 550, 45))
+                self.lineEdit_3.setObjectName("lineEdit_3")
+                self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                self.lineEdit_3.setFont(font)
+
+                self.pushButton2 = QPushButton("", self)
+                self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 7) + 20, 150, 55))
+                # self.pushButton2.setToolTip("<h3>Close</h3>")
+                self.pushButton2.setIcon(QIcon('icon/update.JPG'))
+                self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 7) + 25, 550, 45))
+                self.lineEdit_3.setObjectName("lineEdit_3")
+                self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                self.lineEdit_3.setFont(font)
+
+                self.pushButtoncdk = QPushButton("", self)
+                self.pushButtoncdk.setGeometry(QtCore.QRect(35, (vi1 * 8) + 20, 150, 55))
+                # self.pushButton2.setToolTip("<h3>Close</h3>")
+                self.pushButtoncdk.setIcon(QIcon('icon/caidatkhac.JPG'))
+                self.pushButtoncdk.setIconSize(QtCore.QSize(150, 70))
+
+                self.pushButton = QPushButton("", self)
+                self.pushButton.setGeometry(QtCore.QRect(35, (vi1 * 9) + 20, 150, 55))
+                # self.pushButton2.setToolTip("<h3>Close</h3>")
+                self.pushButton.setIcon(QIcon('icon/thoat.JPG'))
+                self.pushButton.setIconSize(QtCore.QSize(150, 70))
+
+                self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 8) + 25, 550, 45))
+                self.lineEdit_3.setObjectName("lineEdit_3")
+                self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                self.lineEdit_3.setFont(font)
+                self.main_window()
+                self.pushButtoncdk.clicked.connect(self.caidatkhac)
+            def main_window(self):
+                self.setWindowTitle(self.title)
+                self.setGeometry(self.top, self.left, self.width, self.height)
+                self.show()
+
+
+
+            def caidatkhac(self, *args, **kwargs):
+                class Window4(QtWidgets.QDialog, Ui_Form):  # <===
+
+                    def __init__(self):
+                        super().__init__()
+                        # root.winfo_screenwidth(),  root.winfo_screenheight()
+                        self.title = "Print Window"
+                        self.top = 0
+                        self.left = 0
+                        self.width = int(root.winfo_screenwidth())
+                        self.height = int(root.winfo_screenheight())
+
+                        label = QLabel(self)
+                        pixmap = QPixmap('icon/nen.JPG')
+                        label.setPixmap(pixmap)
+                        self.resize(pixmap.width(), pixmap.height())
+
+                        self.pushButton = QPushButton('', self)
+                        self.pushButton.setGeometry(QtCore.QRect(25, 10, 180, 60))
+                        self.pushButton.setIcon(QIcon('icon/ic.JPG'))
+                        self.pushButton.setIconSize(QtCore.QSize(180, 70))
+
+                        self.pushButton = QPushButton('', self)
+                        self.pushButton.setGeometry(QtCore.QRect(35, (vi1) + 20, 150, 55))
+                        # self.pushButton.setToolTip("<h3>Start Print</h3>")
+                        self.pushButton.setIcon(QIcon('icon/tendonvi.JPG'))
+                        self.pushButton.setIconSize(QtCore.QSize(150, 70))
+
+                        font = QFont('Times', 16)
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1) + 25, 695, 45))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButton2 = QPushButton("", self)
+                        self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 2) + 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton2.setIcon(QIcon('icon/diachi.JPG'))
+                        self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 2) + 25, 695, 45))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButton2 = QPushButton("", self)
+                        self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 3) + 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton2.setIcon(QIcon('icon/dienthoai.JPG'))
+                        self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 3) + 25, 300, 45))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButton2 = QPushButton("", self)
+                        self.pushButton2.setGeometry(QtCore.QRect(550, (vi1 * 3) + 20, 100, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton2.setIcon(QIcon('icon/mail.JPG'))
+                        self.pushButton2.setIconSize(QtCore.QSize(100, 70))
+
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(670, (vi1 * 3) + 25, 250, 45))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButton2 = QPushButton("", self)
+                        self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 4) + 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton2.setIcon(QIcon('icon/ngd1.JPG'))
+                        self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 4) + 25, 250, 55))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButton2 = QPushButton("", self)
+                        self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 5) + 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton2.setIcon(QIcon('icon/nd2.JPG'))
+                        self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 5) + 25, 250, 55))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButton2 = QPushButton("", self)
+                        self.pushButton2.setGeometry(QtCore.QRect(500, (vi1 * 4) + 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton2.setIcon(QIcon('icon/passwo.JPG'))
+                        self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(670, (vi1 * 4) + 25, 250, 55))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButton2 = QPushButton("", self)
+                        self.pushButton2.setGeometry(QtCore.QRect(500, (vi1 * 5) + 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton2.setIcon(QIcon('icon/passwo.JPG'))
+                        self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(670, (vi1 * 5) + 25, 250, 55))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButton2 = QPushButton("", self)
+                        self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 6) + 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton2.setIcon(QIcon('icon/t.JPG'))
+                        self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 6) + 25, 550, 45))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButton2 = QPushButton("", self)
+                        self.pushButton2.setGeometry(QtCore.QRect(35, (vi1 * 7) + 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton2.setIcon(QIcon('icon/t.JPG'))
+                        self.pushButton2.setIconSize(QtCore.QSize(150, 70))
+
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 7) + 25, 550, 45))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButtoncdk = QPushButton("", self)
+                        self.pushButtoncdk.setGeometry(QtCore.QRect(35, (vi1 * 8) + 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButtoncdk.setIcon(QIcon('icon/caidatkhac.JPG'))
+                        self.pushButtoncdk.setIconSize(QtCore.QSize(150, 70))
+
+                        self.pushButton = QPushButton("", self)
+                        self.pushButton.setGeometry(QtCore.QRect(35, (vi1 * 9) + 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton.setIcon(QIcon('icon/thoat.JPG'))
+                        self.pushButton.setIconSize(QtCore.QSize(150, 70))
+
+                        self.lineEdit_3 = QtWidgets.QLineEdit(self)
+                        self.lineEdit_3.setGeometry(QtCore.QRect(220, (vi1 * 8) + 25, 550, 45))
+                        self.lineEdit_3.setObjectName("lineEdit_3")
+                        self.lineEdit_3.setPlaceholderText('Chỉ định của bác sĩ')
+                        self.lineEdit_3.setFont(font)
+
+                        self.pushButton = QPushButton("", self)
+                        self.pushButton.setGeometry(QtCore.QRect(220,  20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton.setIcon(QIcon('icon/mo.JPG'))
+                        self.pushButton.setIconSize(QtCore.QSize(150, 70))
+
+                        self.pushButton = QPushButton("", self)
+                        self.pushButton.setGeometry(QtCore.QRect(390, 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton.setIcon(QIcon('icon/sua1.JPG'))
+                        self.pushButton.setIconSize(QtCore.QSize(150, 70))
+
+                        self.pushButton = QPushButton("", self)
+                        self.pushButton.setGeometry(QtCore.QRect(560,  20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton.setIcon(QIcon('icon/luu.JPG'))
+                        self.pushButton.setIconSize(QtCore.QSize(150, 70))
+
+                        self.pushButton = QPushButton("", self)
+                        self.pushButton.setGeometry(QtCore.QRect(730,20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton.setIcon(QIcon('icon/xoa.JPG'))
+                        self.pushButton.setIconSize(QtCore.QSize(150, 70))
+
+                        self.pushButton = QPushButton("", self)
+                        self.pushButton.setGeometry(QtCore.QRect(900, 20, 150, 55))
+                        # self.pushButton2.setToolTip("<h3>Close</h3>")
+                        self.pushButton.setIcon(QIcon('icon/dong1.JPG'))
+                        self.pushButton.setIconSize(QtCore.QSize(150, 70))
+
+                        self.main_window2()
+
+                    def main_window2(self):
+                        self.setWindowTitle(self.title)
+                        self.setGeometry(self.top, self.left, self.width, self.height)
+                        self.show()
+
+                self.w = Window4()
+                self.w.show()
+
+        self.w = Window2()
+        self.w.show()
+
 
     def Deletedata_NewWindow(self):
         conn = sqlite3.connect("db_member.db")

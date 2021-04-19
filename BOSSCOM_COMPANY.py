@@ -126,7 +126,7 @@ class Application:
 
         self.master = master
         self.logic1 = 1
-        self.logicc2 = 1
+        self.logic2 = 1
         self.logic3 = 1
         self.logic4 = 1
         self.logicc3 = 1
@@ -195,9 +195,9 @@ class Application:
         self.bt_add_patient.place(x=(vi2*2)+130, y=30)
         self.bt_add_patient = TkinterCustomButton(image=imageb13, width=vi2, height=vi1, command=self.get_itemsdatabase)
         self.bt_add_patient.place(x=(vi2*3)+160, y=30)
-        self.bt_add_patient = TkinterCustomButton(image=imageb14, width=vi2, height=vi1, command=self.get_itemsdatabase)
+        self.bt_add_patient = TkinterCustomButton(image=imageb14, width=vi2, height=vi1, command=self.Deletedata)
         self.bt_add_patient.place(x=(vi2*4)+190, y=30)
-        self.bt_add_patient = TkinterCustomButton(image=imageb15, width=vi2, height=vi1, command=self.get_itemsdatabase)
+        self.bt_add_patient = TkinterCustomButton(image=imageb15, width=vi2, height=vi1, command=self.add_to_cart)
         self.bt_add_patient.place(x=(vi2*5)+220, y=30)
 
         addWindow.withdraw()
@@ -223,6 +223,7 @@ class Application:
         self.born_agess.delete(0, tk.END)
 
     def ajax(self):
+        # self.add_to_cart()
         if (self.logic1 == 1):
             in1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
             in2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
@@ -267,38 +268,38 @@ class Application:
             self.tenbenhnhan = Label(self.bottom, text="THÔNG TIN BỆNH NHÂN:", font=('arial 12 bold'), fg='black')
             self.tenbenhnhan.place(x=0, y=0)
 
-            self.tenbenhnhan = Label(self.bottom, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
+            self.hoten = Label(self.bottom, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
                                      bg='lightblue')
-            self.tenbenhnhan.place(x=10, y=30)
+            self.hoten.place(x=10, y=30)
 
-            self.name_p = Entry(self.bottom, font=('arial 14 bold'), width=20)
-            self.name_p.place(x=100, y=30)
-            self.name_p.focus()
+            self.hoten_p = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.hoten_p.place(x=100, y=30)
+            self.hoten_p.focus()
 
             self.adr = Label(self.bottom, text="Địa chỉ         :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.adr.place(x=10, y=65)
 
-            self.adr_p = Entry(self.bottom, font=('arial 14 bold'), width=20)
-            self.adr_p.place(x=100, y=65)
+            self.diachi_p = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.diachi_p.place(x=100, y=65)
 
             self.tel = Label(self.bottom, text="Điện thoại    :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.tel.place(x=10, y=100)
-            self.telw = Entry(self.bottom, font=('arial 14 bold'), width=20)
-            self.telw.place(x=100, y=100)
+            self.sdtw = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.sdtw.place(x=100, y=100)
 
             self.mbn = Label(self.bottom, text="Mã BN          :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.mbn.place(x=10, y=135)
 
-            self.y_bn = Entry(self.bottom, font=('arial 14 bold'), width=20)
-            self.y_bn.place(x=100, y=135)
+            self.mbn_bn = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.mbn_bn.place(x=100, y=135)
 
             self.sbh = Label(self.bottom, text="Số bảo hiểm:", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.sbh.place(x=10, y=170)
             self.nbh = Entry(self.bottom, font=('arial 14 bold'), width=20)
             self.nbh.place(x=100, y=170)
 
-            self.ghic = Label(self.bottom, text="Ghi chú   :", font=('arial 10 bold'), fg='black', bg='lightblue')
-            self.ghic.place(x=10, y=205)
+            self.ghi = Label(self.bottom, text="Ghi chú   :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.ghi.place(x=10, y=205)
             self.ghich = Entry(self.bottom, font=('arial 14 bold'), width=20)
             self.ghich.place(x=100, y=205)
 
@@ -306,8 +307,8 @@ class Application:
                                 bg='lightblue')
             self.year_b.place(x=340, y=30)
 
-            self.y_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
-            self.y_b.place(x=435, y=30)
+            self.nam_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.nam_b.place(x=435, y=30)
 
             self.job = Label(self.bottom, text="Nghề nghiệp:", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.job.place(x=340, y=65)
@@ -315,9 +316,9 @@ class Application:
             # self.jobw.place(x=320, y=30)
             test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên', 'nội trợ', 'kinh doanh','nhân viên văn phòng', 'kế toán')
 
-            self.enter = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10,textvariable=n)
-            self.enter.set_completion_list(test_list)
-            self.enter.place(x=435, y=65)
+            self.nghenghiep = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10,textvariable=n)
+            self.nghenghiep.set_completion_list(test_list)
+            self.nghenghiep.place(x=435, y=65)
 
             self.gt = Label(self.bottom, text="Giới tính       :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
@@ -340,21 +341,12 @@ class Application:
             self.ditruyen_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
             self.ditruyen_b.place(x=435, y=170)
 
-            self.nm = Label(self.bottom, text="Bẩm sinh      :", font=('arial 10 bold'), fg='black',
+            self.bamsinh = Label(self.bottom, text="Bẩm sinh      :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
-            self.nm.place(x=340, y=205)
+            self.bamsinh.place(x=340, y=205)
 
-            self.nm_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
-            self.nm_b.place(x=435, y=205)
-
-            # self.st = Label(self.bottom, text="Triệu chứng:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            # self.st.place(x=330, y=90)
-            # # self.stom = Entry(self.bottom, font=('arial 20 bold'), width=18)
-            # # self.stom.place(x=320, y=100)
-            # test_list1 = ('ho','sổ mũi','đau họng','sốt','đau tai','ù tai','mất tiếng')
-            # self.stom = AutocompleteEntry(self.bottom, font=('arial 20 bold'), width=16, textvariable=n1)
-            # self.stom.set_completion_list(test_list1)
-            # self.stom.place(x=320, y=115)
+            self.bamsinh_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.bamsinh_b.place(x=435, y=205)
 
             self.tsb = Label(self.bottom, text="Tiền sử bệnh :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
@@ -363,31 +355,29 @@ class Application:
             self.tsb_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
             self.tsb_b.place(x=660, y=30)
 
-            self.bhm = Label(self.bottom, text="Bệnh hay mắc:", font=('arial 10 bold'), fg='black', bg='lightblue')
-            self.bhm.place(x=560, y=65)
+            self.bhmac = Label(self.bottom, text="Bệnh hay mắc:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.bhmac.place(x=560, y=65)
             # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
             # self.jobw.place(x=320, y=30)
-            test_list = (
-            'tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên',
-            'nội trợ', 'kinh doanh', 'nhân viên văn phòng', 'kế toán')
+            test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên','nội trợ', 'kinh doanh', 'nhân viên văn phòng', 'kế toán')
 
-            self.bhn_m = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10, textvariable=n)
-            self.bhn_m.set_completion_list(test_list)
-            self.bhn_m.place(x=660, y=65)
+            self.bhmac_m = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10, textvariable=n)
+            self.bhmac_m.set_completion_list(test_list)
+            self.bhmac_m.place(x=660, y=65)
 
-            self.du = Label(self.bottom, text="Dị ứng     :", font=('arial 10 bold'), fg='black',
+            self.d_ung = Label(self.bottom, text="Dị ứng     :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
-            self.du.place(x=560, y=100)
+            self.d_ung.place(x=560, y=100)
 
-            self.du_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
-            self.du_b.place(x=660, y=100)
+            self.d_ung_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.d_ung_b.place(x=660, y=100)
 
             self.tq = Label(self.bottom, text="Thói quen SH  :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.tq.place(x=560, y=135)
 
-            self.tq_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
-            self.tq_b.place(x=660, y=135)
+            self.thoiquen_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.thoiquen_b.place(x=660, y=135)
 
             self.lsk = Label(self.bottom, text="Lịch sử KCB :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
@@ -402,45 +392,6 @@ class Application:
 
             self.ppdk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
             self.ppdk_b.place(x=660, y=205)
-
-
-            # self.enteride = Entry(self.bottom, width=25, font=('arial 18 bold'), bg='lightblue')
-            # self.enteride.place(x=800, y=175)
-            # self.enteride.focus()
-
-            # self.droplist = OptionMenu(self.bottom, c, 'NAM', 'NỮ')
-            # self.droplist.pack()
-            # self.menu = self.droplist.nametowidget(self.droplist.menuname)
-            # self.menu.configure(font=('arial 20 bold'))
-            # c.set('NAM')
-            # self.droplist.config(width=10, font=('arial 18 bold'))
-            # self.droplist.place(x=610, y=100)
-
-            # self.seachinfo = Button(self.bottom1, text="Tìm kiếm", width=12, height=2, font=('arial 14 bold'),
-            #                         bg='orange',
-            #                         command=self.Search)
-            # self.seachinfo.place(x=640, y=10)
-            #
-            # self.name_info = Label(self.bottom1, text="Tên:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            # self.name_info.place(x=5, y=10)
-            #
-            # self.name_infos = Entry(self.bottom1, width=18, font=('arial 18 bold'), bg='white')
-            # self.name_infos.place(x=5, y=38)
-            #
-            # self.job_s = Label(self.bottom1, text="Nghề nghiệp:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            # self.job_s.place(x=245, y=10)
-            # self.from_jobs = Entry(self.bottom1, font=('arial 18 bold'), width=12)
-            # self.from_jobs.place(x=245, y=38)
-            #
-            # self.aadd_s = Label(self.bottom1, text="Địa Chỉ:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            # self.aadd_s.place(x=410, y=10)
-            # self.from_addss = Entry(self.bottom1, font=('arial 18 bold'), width=10)
-            # self.from_addss.place(x=410, y=38)
-            #
-            # self.born_s2 = Label(self.bottom1, text="Năm sinh:", font=('arial 10 bold'), fg='black', bg='lightblue')
-            # self.born_s2.place(x=550, y=10)
-            # self.born_agess = Entry(self.bottom1, font=('arial 18 bold'), width=6)
-            # self.born_agess.place(x=550, y=38)
 
             self.scrollbarx = Scrollbar(self.RightForm, orient=HORIZONTAL)
             self.scrollbary = Scrollbar(self.RightForm, orient=VERTICAL)
@@ -486,7 +437,8 @@ class Application:
             self.logic1 = 2
 
     def timkiem(self):
-        if (self.logic1 == 1):
+        # self.add_to_cart()
+        if (self.logic2 == 1):
             in1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
             in2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
             in3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
@@ -495,7 +447,7 @@ class Application:
             in6 = int(root.winfo_screenheight() - vi1+380- (vi2*5)-220)
             in7 = int(((vi1*9)+45)/30)
 
-            self.bottom = Frame(root, width=vi3, height=250)#, bg='lightblue')
+            self.bottom = Frame(root, width=vi3, height=500)#, bg='lightblue')
             # self.bottom.pack(side=TOP)
             self.bottom.place(x=vi4, y=vi1+50)
 
@@ -521,14 +473,6 @@ class Application:
             img = Label(self.bottom, image=render)
             img.image = render
             img.place(x=0, y=0)
-
-
-            # img = Label(self.bottom1, image=render)
-            # img.image = render
-            # img.place(x=0, y=0)
-
-            # self.tenbenhnhan = Label(self.bottom, text="THÔNG TIN BỆNH NHÂN:", font=('arial 12 bold'), fg='black')
-            # self.tenbenhnhan.place(x=0, y=0)
 
             self.tenbenhnhan = Label(self.bottom, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
                                      bg='lightblue')
@@ -610,15 +554,6 @@ class Application:
             self.nm_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
             self.nm_b.place(x=435, y=205)
 
-            # self.st = Label(self.bottom, text="Triệu chứng:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            # self.st.place(x=330, y=90)
-            # # self.stom = Entry(self.bottom, font=('arial 20 bold'), width=18)
-            # # self.stom.place(x=320, y=100)
-            # test_list1 = ('ho','sổ mũi','đau họng','sốt','đau tai','ù tai','mất tiếng')
-            # self.stom = AutocompleteEntry(self.bottom, font=('arial 20 bold'), width=16, textvariable=n1)
-            # self.stom.set_completion_list(test_list1)
-            # self.stom.place(x=320, y=115)
-
             self.tsb = Label(self.bottom, text="Năm sinh :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.tsb.place(x=560, y=30)
@@ -667,43 +602,21 @@ class Application:
             self.ppdk_b.place(x=660, y=205)
 
 
-            # self.enteride = Entry(self.bottom, width=25, font=('arial 18 bold'), bg='lightblue')
-            # self.enteride.place(x=800, y=175)
-            # self.enteride.focus()
+            self.ppdk = Label(self.bottom, text="T lần khám:", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.ppdk.place(x=560, y=205)
 
-            # self.droplist = OptionMenu(self.bottom, c, 'NAM', 'NỮ')
-            # self.droplist.pack()
-            # self.menu = self.droplist.nametowidget(self.droplist.menuname)
-            # self.menu.configure(font=('arial 20 bold'))
-            # c.set('NAM')
-            # self.droplist.config(width=10, font=('arial 18 bold'))
-            # self.droplist.place(x=610, y=100)
+            self.ppdk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.ppdk_b.place(x=660, y=205)
 
-            # self.seachinfo = Button(self.bottom1, text="Tìm kiếm", width=12, height=2, font=('arial 14 bold'),
-            #                         bg='orange',
-            #                         command=self.Search)
-            # self.seachinfo.place(x=640, y=10)
-            #
-            # self.name_info = Label(self.bottom1, text="Tên:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            # self.name_info.place(x=5, y=10)
-            #
-            # self.name_infos = Entry(self.bottom1, width=18, font=('arial 18 bold'), bg='white')
-            # self.name_infos.place(x=5, y=38)
-            #
-            # self.job_s = Label(self.bottom1, text="Nghề nghiệp:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            # self.job_s.place(x=245, y=10)
-            # self.from_jobs = Entry(self.bottom1, font=('arial 18 bold'), width=12)
-            # self.from_jobs.place(x=245, y=38)
-            #
-            # self.aadd_s = Label(self.bottom1, text="Địa Chỉ:", font=('arial 12 bold'), fg='black', bg='lightblue')
-            # self.aadd_s.place(x=410, y=10)
-            # self.from_addss = Entry(self.bottom1, font=('arial 18 bold'), width=10)
-            # self.from_addss.place(x=410, y=38)
-            #
-            # self.born_s2 = Label(self.bottom1, text="Năm sinh:", font=('arial 10 bold'), fg='black', bg='lightblue')
-            # self.born_s2.place(x=550, y=10)
-            # self.born_agess = Entry(self.bottom1, font=('arial 18 bold'), width=6)
-            # self.born_agess.place(x=550, y=38)
+
+            self.ppdk = Label(self.bottom, text="T lần khám:", font=('arial 10 bold'), fg='black',
+                            bg='lightblue')
+            self.ppdk.place(x=10, y=250)
+
+            self.ppdk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.ppdk_b.place(x=100, y=250)
+
 
             self.scrollbarx = Scrollbar(self.RightForm, orient=HORIZONTAL)
             self.scrollbary = Scrollbar(self.RightForm, orient=VERTICAL)
@@ -746,11 +659,12 @@ class Application:
                 self.tree.insert('', 'end', values=(data))
             cursor.close()
             conn.close()
-            self.logic1 = 2
+            self.logic2 = 2
 
 
     def cd111(self):
-        if (self.logicc3 == 1):
+        # self.add_to_cart()
+        if (self.logic3 == 1):
             in1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
             in2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
             in3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
@@ -872,7 +786,8 @@ class Application:
             self.logicc3 = 2
 
     def aj111(self):
-        if (self.logicc2 == 1):
+        # self.add_to_cart()
+        if (self.logic4 == 1):
             i1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
             i2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
             i3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
@@ -880,109 +795,102 @@ class Application:
             i5 = int(root.winfo_screenheight() - vi1+380 - (vi2*5)-220)
             i6 = int(((vi1*9)+45)/30)
 
-            self.bottomc1 = Frame(root, width=vi3, height=180)#, bg='lightblue')
+            self.bottom = Frame(root, width=vi3, height=180)#, bg='lightblue')
             # self.bottom.pack(side=TOP)
-            self.bottomc1.place(x=vi4, y=vi1+50)
+            self.bottom.place(x=vi4, y=vi1+50)
 
             # self.bottom1 = Frame(root, width=vi3, height=80, bg='yellow')
             # self.bottom1.place(x=vi4, y=400)
 
-            self.bottomc2 = Frame(root, width=vi3, height=i5, bg='lightblue')
-            self.bottomc2.place(x=vi4, y=vi1+240)
+            self.bottom2 = Frame(root, width=vi3, height=i5, bg='lightblue')
+            self.bottom2.place(x=vi4, y=vi1+240)
 
             load = Image.open("icon/nen.JPG")
             render = ImageTk.PhotoImage(load)
-            img = Label(self.bottomc2, image=render)
+            img = Label(self.bottom2, image=render)
             img.image = render
             img.place(x=0, y=0)
 
-            self.Top = Frame(self.bottomc2, width=vi3, bd=2, relief=SOLID)
+            self.Top = Frame(self.bottom2, width=vi3, bd=2, relief=SOLID)
             self.Top.pack(side=TOP)
-            self.MidFrame = Frame(self.bottomc2, width=vi3)
+            self.MidFrame = Frame(self.bottom2, width=vi3)
             self.MidFrame.pack(side=TOP)
             self.RightForm = Frame(self.MidFrame, width=vi3)
             self.RightForm.pack(side=RIGHT)
 
-            img = Label(self.bottomc1, image=render)
+            img = Label(self.bottom, image=render)
             img.image = render
             img.place(x=0, y=0)
 
-
-            # img = Label(self.bottom1, image=render)
-            # img.image = render
-            # img.place(x=0, y=0)
-
-            self.tenbenhnhan = Label(self.bottomc1, text="THÔNG TIN BỆNH NHÂN:", font=('arial 12 bold'), fg='black')
+            self.tenbenhnhan = Label(self.bottom, text="THÔNG TIN BỆNH NHÂN:", font=('arial 12 bold'), fg='black')
             self.tenbenhnhan.place(x=0, y=0)
 
-            self.tenbenhnhan = Label(self.bottomc1, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
+            self.tenbenhnhan = Label(self.bottom, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
                                      bg='lightblue')
             self.tenbenhnhan.place(x=10, y=30)
 
-            self.name_p = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.name_p = Entry(self.bottom, font=('arial 14 bold'), width=25)
             self.name_p.place(x=100, y=30)
             self.name_p.focus()
 
-            self.adr = Label(self.bottomc1, text="Địa chỉ         :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr = Label(self.bottom, text="Địa chỉ         :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.adr.place(x=10, y=65)
 
-            self.adr_p = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.adr_p = Entry(self.bottom, font=('arial 14 bold'), width=25)
             self.adr_p.place(x=100, y=65)
 
-            self.tel = Label(self.bottomc1, text="Điện thoại    :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.tel = Label(self.bottom, text="Điện thoại    :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.tel.place(x=10, y=100)
-            self.telw = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.telw = Entry(self.bottom, font=('arial 14 bold'), width=25)
             self.telw.place(x=100, y=100)
 
-            self.mbn = Label(self.bottomc1, text="Mã BN          :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.mbn = Label(self.bottom, text="Mã BN          :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.mbn.place(x=10, y=135)
 
-            self.y_bn = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.y_bn = Entry(self.bottom, font=('arial 14 bold'), width=25)
             self.y_bn.place(x=100, y=135)
 
-
-
-            self.year_b = Label(self.bottomc1, text="Năm sinh       :", font=('arial 10 bold'), fg='black',
+            self.year_b = Label(self.bottom, text="Năm sinh       :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.year_b.place(x=400, y=30)
 
-            self.y_b = Entry(self.bottomc1, font=('arial 14 bold'), width=10)
+            self.y_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
             self.y_b.place(x=495, y=30)
 
-            self.year_b = Label(self.bottomc1, text="Số phiếu:", font=('arial 10 bold'), fg='black',
+            self.year_b = Label(self.bottom, text="Số phiếu:", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.year_b.place(x=400, y=30)
 
-            self.y_b = Entry(self.bottomc1, font=('arial 14 bold'), width=10)
+            self.y_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
             self.y_b.place(x=495, y=30)
-            self.year_b = Label(self.bottomc1, text="Khám lần :", font=('arial 10 bold'), fg='black',
+            self.year_b = Label(self.bottom, text="Khám lần :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.year_b.place(x=615, y=30)
-            self.y_b3 = Entry(self.bottomc1, font=('arial 14 bold'), width=7)
+            self.y_b3 = Entry(self.bottom, font=('arial 14 bold'), width=7)
             self.y_b3.place(x=690, y=30)
 
-            self.job = Label(self.bottomc1, text="Nghề nghiệp :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.job = Label(self.bottom, text="Nghề nghiệp :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.job.place(x=400, y=65)
             # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
             # self.jobw.place(x=320, y=30)
             test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên', 'nội trợ', 'kinh doanh','nhân viên văn phòng', 'kế toán')
 
-            self.enter = AutocompleteEntry(self.bottomc1, font=('arial 14 bold'), width=25,textvariable=n)
+            self.enter = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=25,textvariable=n)
             self.enter.set_completion_list(test_list)
             self.enter.place(x=495, y=65)
 
-            self.gt = Label(self.bottomc1, text="Giới tính        :", font=('arial 10 bold'), fg='black',
+            self.gt = Label(self.bottom, text="Giới tính        :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.gt.place(x=400, y=100)
 
-            self.gt_b = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.gt_b = Entry(self.bottom, font=('arial 14 bold'), width=25)
             self.gt_b.place(x=495, y=100)
 
-            self.gt = Label(self.bottomc1, text="Giới tính        :", font=('arial 10 bold'), fg='black',
+            self.gt = Label(self.bottom, text="Giới tính        :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.gt.place(x=400, y=135)
 
-            self.gt_b = Entry(self.bottomc1, font=('arial 14 bold'), width=25)
+            self.gt_b = Entry(self.bottom, font=('arial 14 bold'), width=25)
             self.gt_b.place(x=495, y=135)
 
             self.scrollbarx = Scrollbar(self.RightForm, orient=HORIZONTAL)
@@ -1026,7 +934,7 @@ class Application:
                 self.tree.insert('', 'end', values=(data))
             cursor.close()
             conn.close()
-            self.logicc2 = 2
+            self.logic4 = 2
 
     def Deletedata(self):
 
@@ -1075,11 +983,14 @@ class Application:
 
     def add_to_cart(self):
 
-        self.right.destroy()
+        # self.right.destroy()
         self.bottom.destroy()
         # self.bottom1.destroy()
         self.bottom2.destroy()
         self.logic1 = 1
+        # self.logic2 = 1
+        # self.logic3 = 1
+        # self.logic4 = 1
 
     def delete_text(self, *args, **kwargs):
 

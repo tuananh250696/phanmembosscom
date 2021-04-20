@@ -87,6 +87,15 @@ vi3 = int(v3)
 v4 = vi2 + 50
 vi4 = int(v4)
 
+in1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
+in2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
+in3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
+in4 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
+in5 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
+in6 = int(root.winfo_screenheight() - vi1+380- (vi2*5)-220)
+in7 = int(((vi1*9)+45)/30)
+
+
 class AutocompleteEntry(Entry):
 
     def set_completion_list(self, completion_list):
@@ -135,12 +144,6 @@ class Application:
         img = Label(master, image=render)
         img.image = render
         img.place(x=0, y=0)
-        # frame
-        # self.left = Frame(master, width=220, height=root.winfo_screenheight(), bg='lightskyblue1')
-        # self.left.place(x=0, y=0)
-        # self.left.pack(side=LEFT)
-        # # self.left.pack(fill=TOP)#, expand=1)
-
 
         imageb1 = ImageTk.PhotoImage(Image.open("icon/ic.JPG").resize(((5+vi2+5), vi1)))
         imageb2 = ImageTk.PhotoImage(Image.open("icon/benhnhan.JPG").resize((vi2, vi1)))
@@ -224,14 +227,8 @@ class Application:
 
     def ajax(self):
         # self.add_to_cart()
+
         if (self.logic1 == 1):
-            in1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
-            in2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
-            in3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
-            in4 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
-            in5 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
-            in6 = int(root.winfo_screenheight() - vi1+380- (vi2*5)-220)
-            in7 = int(((vi1*9)+45)/30)
 
             self.bottom = Frame(root, width=vi3, height=250)#, bg='lightblue')
             # self.bottom.pack(side=TOP)
@@ -436,132 +433,140 @@ class Application:
             conn.close()
             self.logic1 = 2
 
+        if (self.logic2 == 2):
+            self.logic2 = 1
+            self.bottomtk.destroy()
+            self.bottom2tk.destroy()
+        if (self.logic3 == 2):
+            self.logic3 = 1
+            self.bottomcd.destroy()
+
+        if (self.logic4 == 2):
+            self.logic4 = 1
+            self.bottomja.destroy()
+            self.bottom2ja.destroy()
+
     def timkiem(self):
         # self.add_to_cart()
-        if (self.logic2 == 1):
-            in1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
-            in2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
-            in3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
-            in4 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
-            in5 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
-            in6 = int(root.winfo_screenheight() - vi1+380- (vi2*5)-220)
-            in7 = int(((vi1*9)+45)/30)
 
-            self.bottom = Frame(root, width=vi3, height=500)#, bg='lightblue')
+        if (self.logic2 == 1):
+
+
+            self.bottomtk = Frame(root, width=vi3, height=500)#, bg='lightblue')
             # self.bottom.pack(side=TOP)
-            self.bottom.place(x=vi4, y=vi1+50)
+            self.bottomtk.place(x=vi4, y=vi1+50)
 
             # self.bottom1 = Frame(root, width=vi3, height=80, bg='yellow')
             # self.bottom1.place(x=vi4, y=400)
 
-            self.bottom2 = Frame(root, width=vi3, height=in6, bg='lightblue')
-            self.bottom2.place(x=vi4, y=vi1+310)
+            self.bottom2tk = Frame(root, width=vi3, height=in6, bg='lightblue')
+            self.bottom2tk.place(x=vi4, y=vi1+310)
 
             load = Image.open("icon/nen.JPG")
             render = ImageTk.PhotoImage(load)
-            img = Label(self.bottom2, image=render)
+            img = Label(self.bottom2tk, image=render)
             img.image = render
             img.place(x=0, y=0)
 
-            self.Top = Frame(self.bottom2, width=vi3, bd=2, relief=SOLID)
+            self.Top = Frame(self.bottom2tk, width=vi3, bd=2, relief=SOLID)
             self.Top.pack(side=TOP)
-            self.MidFrame = Frame(self.bottom2, width=vi3)
+            self.MidFrame = Frame(self.bottom2tk, width=vi3)
             self.MidFrame.pack(side=TOP)
             self.RightForm = Frame(self.MidFrame, width=vi3)
             self.RightForm.pack(side=RIGHT)
 
-            img = Label(self.bottom, image=render)
+            img = Label(self.bottomtk, image=render)
             img.image = render
             img.place(x=0, y=0)
 
-            self.tenbenhnhan = Label(self.bottom, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
+            self.tenbenhnhan = Label(self.bottomtk, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
                                      bg='lightblue')
             self.tenbenhnhan.place(x=10, y=30)
 
-            self.name_p = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.name_p = Entry(self.bottomtk, font=('arial 14 bold'), width=20)
             self.name_p.place(x=100, y=30)
             self.name_p.focus()
 
-            self.adr = Label(self.bottom, text="Địa chỉ      :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr = Label(self.bottomtk, text="Địa chỉ      :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.adr.place(x=10, y=65)
 
-            self.adr_p = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.adr_p = Entry(self.bottomtk, font=('arial 14 bold'), width=20)
             self.adr_p.place(x=100, y=65)
 
-            self.tel = Label(self.bottom, text="Điện thoại    :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.tel = Label(self.bottomtk, text="Điện thoại    :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.tel.place(x=10, y=100)
-            self.telw = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.telw = Entry(self.bottomtk, font=('arial 14 bold'), width=20)
             self.telw.place(x=100, y=100)
 
-            self.mbn = Label(self.bottom, text="Nghề nghiệp:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.mbn = Label(self.bottomtk, text="Nghề nghiệp:", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.mbn.place(x=10, y=135)
 
-            self.y_bn = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.y_bn = Entry(self.bottomtk, font=('arial 14 bold'), width=20)
             self.y_bn.place(x=100, y=135)
 
-            self.sbh = Label(self.bottom, text="Đơn vị C.tác", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.sbh = Label(self.bottomtk, text="Đơn vị C.tác", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.sbh.place(x=10, y=170)
-            self.nbh = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.nbh = Entry(self.bottomtk, font=('arial 14 bold'), width=20)
             self.nbh.place(x=100, y=170)
 
-            self.ghic = Label(self.bottom, text=" Bs.chỉ định  :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.ghic = Label(self.bottomtk, text=" Bs.chỉ định  :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.ghic.place(x=10, y=205)
-            self.ghich = Entry(self.bottom, font=('arial 14 bold'), width=20)
+            self.ghich = Entry(self.bottomtk, font=('arial 14 bold'), width=20)
             self.ghich.place(x=100, y=205)
 
-            self.year_b = Label(self.bottom, text="Số phiếu     :", font=('arial 10 bold'), fg='black',
+            self.year_b = Label(self.bottomtk, text="Số phiếu     :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.year_b.place(x=340, y=30)
 
-            self.y_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.y_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.y_b.place(x=435, y=30)
 
-            self.job = Label(self.bottom, text="Số bảo hiểm:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.job = Label(self.bottomtk, text="Số bảo hiểm:", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.job.place(x=340, y=65)
             # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
             # self.jobw.place(x=320, y=30)
             test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên', 'nội trợ', 'kinh doanh','nhân viên văn phòng', 'kế toán')
 
-            self.enter = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10,textvariable=n)
+            self.enter = AutocompleteEntry(self.bottomtk, font=('arial 14 bold'), width=10,textvariable=n)
             self.enter.set_completion_list(test_list)
             self.enter.place(x=435, y=65)
 
-            self.gt = Label(self.bottom, text="tiền sử bệnh :", font=('arial 10 bold'), fg='black',
+            self.gt = Label(self.bottomtk, text="tiền sử bệnh :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.gt.place(x=340, y=100)
 
-            self.gt_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.gt_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.gt_b.place(x=435, y=100)
 
-            self.nm = Label(self.bottom, text="Dị ứng  :", font=('arial 10 bold'), fg='black',
+            self.nm = Label(self.bottomtk, text="Dị ứng  :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.nm.place(x=340, y=135)
 
-            self.nm_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.nm_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.nm_b.place(x=435, y=135)
 
-            self.ditruyen = Label(self.bottom, text="Lí do khám :", font=('arial 10 bold'), fg='black',
+            self.ditruyen = Label(self.bottomtk, text="Lí do khám :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.ditruyen.place(x=340, y=170)
 
-            self.ditruyen_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.ditruyen_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.ditruyen_b.place(x=435, y=170)
 
-            self.nm = Label(self.bottom, text="Ghi chú   :", font=('arial 10 bold'), fg='black',
+            self.nm = Label(self.bottomtk, text="Ghi chú   :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.nm.place(x=340, y=205)
 
-            self.nm_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.nm_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.nm_b.place(x=435, y=205)
 
-            self.tsb = Label(self.bottom, text="Năm sinh :", font=('arial 10 bold'), fg='black',
+            self.tsb = Label(self.bottomtk, text="Năm sinh :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.tsb.place(x=560, y=30)
 
-            self.tsb_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.tsb_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.tsb_b.place(x=660, y=30)
 
-            self.bhm = Label(self.bottom, text="Giới tính:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.bhm = Label(self.bottomtk, text="Giới tính:", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.bhm.place(x=560, y=65)
             # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
             # self.jobw.place(x=320, y=30)
@@ -569,52 +574,52 @@ class Application:
             'tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên',
             'nội trợ', 'kinh doanh', 'nhân viên văn phòng', 'kế toán')
 
-            self.bhn_m = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10, textvariable=n)
+            self.bhn_m = AutocompleteEntry(self.bottomtk, font=('arial 14 bold'), width=10, textvariable=n)
             self.bhn_m.set_completion_list(test_list)
             self.bhn_m.place(x=660, y=65)
 
-            self.du = Label(self.bottom, text="Nhóm máu   :", font=('arial 10 bold'), fg='black',
+            self.du = Label(self.bottomtk, text="Nhóm máu   :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.du.place(x=560, y=100)
 
-            self.du_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.du_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.du_b.place(x=660, y=100)
 
-            self.tq = Label(self.bottom, text="Di truyền  :", font=('arial 10 bold'), fg='black',
+            self.tq = Label(self.bottomtk, text="Di truyền  :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.tq.place(x=560, y=135)
 
-            self.tq_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.tq_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.tq_b.place(x=660, y=135)
 
-            self.lsk = Label(self.bottom, text="Lần khám :", font=('arial 10 bold'), fg='black',
+            self.lsk = Label(self.bottomtk, text="Lần khám :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.lsk.place(x=560, y=170)
 
-            self.lsk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.lsk_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.lsk_b.place(x=660, y=170)
 
-            self.ppdk = Label(self.bottom, text="T lần khám:", font=('arial 10 bold'), fg='black',
+            self.ppdk = Label(self.bottomtk, text="T lần khám:", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.ppdk.place(x=560, y=205)
 
-            self.ppdk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.ppdk_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.ppdk_b.place(x=660, y=205)
 
 
-            self.ppdk = Label(self.bottom, text="T lần khám:", font=('arial 10 bold'), fg='black',
+            self.ppdk = Label(self.bottomtk, text="T lần khám:", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.ppdk.place(x=560, y=205)
 
-            self.ppdk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.ppdk_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.ppdk_b.place(x=660, y=205)
 
 
-            self.ppdk = Label(self.bottom, text="T lần khám:", font=('arial 10 bold'), fg='black',
+            self.ppdk = Label(self.bottomtk, text="T lần khám:", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.ppdk.place(x=10, y=250)
 
-            self.ppdk_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.ppdk_b = Entry(self.bottomtk, font=('arial 14 bold'), width=10)
             self.ppdk_b.place(x=100, y=250)
 
 
@@ -661,27 +666,35 @@ class Application:
             conn.close()
             self.logic2 = 2
 
+        if (self.logic1 == 2):
+            self.logic1 = 1
+            self.bottom.destroy()
+            self.bottom2.destroy()
+        if (self.logic3 == 2):
+            self.logic3 = 1
+            self.bottomcd.destroy()
+
+        if (self.logic4 == 2):
+            self.logic4 = 1
+            self.bottomja.destroy()
+            self.bottom2ja.destroy()
+
 
     def cd111(self):
         # self.add_to_cart()
-        if (self.logic3 == 1):
-            in1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
-            in2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
-            in3 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
-            in4 = int((root.winfo_screenwidth() - vi2 - 100) / 10)
-            in5 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
-            in6 = int(root.winfo_screenheight() - vi1 + 380 - (vi2 * 5) - 220)
-            in7 = int(((vi1 * 9) + 45) / 30)
 
-            self.bottom = Frame(root, width=vi3, height=root.winfo_screenheight())  # , bg='lightblue')
+        if (self.logic3 == 1):
+
+
+            self.bottomcd = Frame(root, width=vi3, height=root.winfo_screenheight())  # , bg='lightblue')
             # self.bottom.pack(side=TOP)
-            self.bottom.place(x=vi4, y=vi1 + 50)
+            self.bottomcd.place(x=vi4, y=vi1 + 50)
 
 
             load = Image.open("icon/nen.JPG")
             render = ImageTk.PhotoImage(load)
 
-            img = Label(self.bottom, image=render)
+            img = Label(self.bottomcd, image=render)
             img.image = render
             img.place(x=0, y=0)
 
@@ -689,104 +702,121 @@ class Application:
             # img.image = render
             # img.place(x=0, y=0)
 
-            self.tenbenhnhan = Label(self.bottom, text="Chẩn đoán :", font=('arial 10 bold'), fg='black',
+            self.tenbenhnhan = Label(self.bottomcd, text="Chẩn đoán :", font=('arial 10 bold'), fg='black',
                                      bg='lightblue')
             self.tenbenhnhan.place(x=20, y=40)
 
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=140, y=30)
             self.name_p.focus()
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=380, y=30)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=620, y=30)
-            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68,height=1, fg='black', bg='gray70')
+            self.adr = Label(self.bottomcd, font=('arial 12 bold'), width=68,height=1, fg='black', bg='gray70')
             self.adr.place(x=140, y=55)
 
-            self.adr = Label(self.bottom, text="Đánh giá :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr = Label(self.bottomcd, text="Đánh giá :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.adr.place(x=20, y=90)
-            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.adr_p.place(x=140, y=90)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=380, y=90)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=620, y=90)
-            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black',bg='gray70')
+            self.adr = Label(self.bottomcd, font=('arial 12 bold'), width=68, height=1, fg='black',bg='gray70')
             self.adr.place(x=140, y=115)
 
-            self.adr = Label(self.bottom, text="Hướng diều trị:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr = Label(self.bottomcd, text="Hướng diều trị:", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.adr.place(x=20, y=150)
-            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.adr_p.place(x=140, y=150)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=380, y=150)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=620, y=150)
-            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr = Label(self.bottomcd, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
             self.adr.place(x=140, y=175)
 
-            self.adr = Label(self.bottom, text="Lời dặn bác sĩ:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr = Label(self.bottomcd, text="Lời dặn bác sĩ:", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.adr.place(x=20, y=210)
-            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.adr_p.place(x=140, y=210)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=380, y=210)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=620, y=210)
-            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr = Label(self.bottomcd, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
             self.adr.place(x=140, y=235)
 
-            self.adr = Label(self.bottom, text="Đơn thuốc:", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr = Label(self.bottomcd, text="Đơn thuốc:", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.adr.place(x=20, y=270)
-            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.adr_p.place(x=140, y=270)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=380, y=270)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=620, y=270)
-            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr = Label(self.bottomcd, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
             self.adr.place(x=140, y=295)
 
-            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.adr_p.place(x=140, y=325)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=380, y=325)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=620, y=325)
-            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr = Label(self.bottomcd, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
             self.adr.place(x=140, y=350)
 
-            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.adr_p.place(x=140, y=380)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=380, y=380)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=620, y=380)
-            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr = Label(self.bottomcd, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
             self.adr.place(x=140, y=405)
 
-            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.adr_p.place(x=140, y=435)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=380, y=435)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=620, y=435)
-            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr = Label(self.bottomcd, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
             self.adr.place(x=140, y=460)
 
-            self.adr_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.adr_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.adr_p.place(x=140, y=490)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=380, y=490)
-            self.name_p = Entry(self.bottom, font=('arial 12 bold'), width=24)
+            self.name_p = Entry(self.bottomcd, font=('arial 12 bold'), width=24)
             self.name_p.place(x=620, y=490)
-            self.adr = Label(self.bottom, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
+            self.adr = Label(self.bottomcd, font=('arial 12 bold'), width=68, height=1, fg='black', bg='gray70')
             self.adr.place(x=140, y=515)
 
             self.logicc3 = 2
 
+        if (self.logic2 == 2):
+            self.logic2 = 1
+            self.bottomtk.destroy()
+            self.bottom2tk.destroy()
+
+        if (self.logic4 == 2):
+            self.logic4 = 1
+            self.bottomja.destroy()
+            self.bottom2ja.destroy()
+
+        if (self.logic1 == 2):
+            self.logic1 = 1
+            self.bottom.destroy()
+            self.bottom2.destroy()
+
+
     def aj111(self):
         # self.add_to_cart()
+
         if (self.logic4 == 1):
             i1 = int((root.winfo_screenwidth() - vi2 - 100) / 12)
             i2 = int((root.winfo_screenwidth() - vi2 - 100) / 6)
@@ -795,15 +825,15 @@ class Application:
             i5 = int(root.winfo_screenheight() - vi1+380 - (vi2*5)-220)
             i6 = int(((vi1*9)+45)/30)
 
-            self.bottom = Frame(root, width=vi3, height=180)#, bg='lightblue')
+            self.bottomja = Frame(root, width=vi3, height=180)#, bg='lightblue')
             # self.bottom.pack(side=TOP)
-            self.bottom.place(x=vi4, y=vi1+50)
+            self.bottomja.place(x=vi4, y=vi1+50)
 
             # self.bottom1 = Frame(root, width=vi3, height=80, bg='yellow')
             # self.bottom1.place(x=vi4, y=400)
 
-            self.bottom2 = Frame(root, width=vi3, height=i5, bg='lightblue')
-            self.bottom2.place(x=vi4, y=vi1+240)
+            self.bottom2ja = Frame(root, width=vi3, height=i5, bg='lightblue')
+            self.bottom2ja.place(x=vi4, y=vi1+240)
 
             load = Image.open("icon/nen.JPG")
             render = ImageTk.PhotoImage(load)
@@ -811,9 +841,9 @@ class Application:
             img.image = render
             img.place(x=0, y=0)
 
-            self.Top = Frame(self.bottom2, width=vi3, bd=2, relief=SOLID)
+            self.Top = Frame(self.bottom2ja, width=vi3, bd=2, relief=SOLID)
             self.Top.pack(side=TOP)
-            self.MidFrame = Frame(self.bottom2, width=vi3)
+            self.MidFrame = Frame(self.bottom2ja, width=vi3)
             self.MidFrame.pack(side=TOP)
             self.RightForm = Frame(self.MidFrame, width=vi3)
             self.RightForm.pack(side=RIGHT)
@@ -822,75 +852,75 @@ class Application:
             img.image = render
             img.place(x=0, y=0)
 
-            self.tenbenhnhan = Label(self.bottom, text="THÔNG TIN BỆNH NHÂN:", font=('arial 12 bold'), fg='black')
+            self.tenbenhnhan = Label(self.bottomja, text="THÔNG TIN BỆNH NHÂN:", font=('arial 12 bold'), fg='black')
             self.tenbenhnhan.place(x=0, y=0)
 
-            self.tenbenhnhan = Label(self.bottom, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
+            self.tenbenhnhan = Label(self.bottomja, text="Họ và tên     :", font=('arial 10 bold'), fg='black',
                                      bg='lightblue')
             self.tenbenhnhan.place(x=10, y=30)
 
-            self.name_p = Entry(self.bottom, font=('arial 14 bold'), width=25)
+            self.name_p = Entry(self.bottomja, font=('arial 14 bold'), width=25)
             self.name_p.place(x=100, y=30)
             self.name_p.focus()
 
-            self.adr = Label(self.bottom, text="Địa chỉ         :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.adr = Label(self.bottomja, text="Địa chỉ         :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.adr.place(x=10, y=65)
 
-            self.adr_p = Entry(self.bottom, font=('arial 14 bold'), width=25)
+            self.adr_p = Entry(self.bottomja, font=('arial 14 bold'), width=25)
             self.adr_p.place(x=100, y=65)
 
-            self.tel = Label(self.bottom, text="Điện thoại    :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.tel = Label(self.bottomja, text="Điện thoại    :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.tel.place(x=10, y=100)
-            self.telw = Entry(self.bottom, font=('arial 14 bold'), width=25)
+            self.telw = Entry(self.bottomja, font=('arial 14 bold'), width=25)
             self.telw.place(x=100, y=100)
 
-            self.mbn = Label(self.bottom, text="Mã BN          :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.mbn = Label(self.bottomja, text="Mã BN          :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.mbn.place(x=10, y=135)
 
-            self.y_bn = Entry(self.bottom, font=('arial 14 bold'), width=25)
+            self.y_bn = Entry(self.bottomja, font=('arial 14 bold'), width=25)
             self.y_bn.place(x=100, y=135)
 
-            self.year_b = Label(self.bottom, text="Năm sinh       :", font=('arial 10 bold'), fg='black',
+            self.year_b = Label(self.bottomja, text="Năm sinh       :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.year_b.place(x=400, y=30)
 
-            self.y_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.y_b = Entry(self.bottomja, font=('arial 14 bold'), width=10)
             self.y_b.place(x=495, y=30)
 
-            self.year_b = Label(self.bottom, text="Số phiếu:", font=('arial 10 bold'), fg='black',
+            self.year_b = Label(self.bottomja, text="Số phiếu:", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.year_b.place(x=400, y=30)
 
-            self.y_b = Entry(self.bottom, font=('arial 14 bold'), width=10)
+            self.y_b = Entry(self.bottomja, font=('arial 14 bold'), width=10)
             self.y_b.place(x=495, y=30)
-            self.year_b = Label(self.bottom, text="Khám lần :", font=('arial 10 bold'), fg='black',
+            self.year_b = Label(self.bottomja, text="Khám lần :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.year_b.place(x=615, y=30)
-            self.y_b3 = Entry(self.bottom, font=('arial 14 bold'), width=7)
+            self.y_b3 = Entry(self.bottomja, font=('arial 14 bold'), width=7)
             self.y_b3.place(x=690, y=30)
 
-            self.job = Label(self.bottom, text="Nghề nghiệp :", font=('arial 10 bold'), fg='black', bg='lightblue')
+            self.job = Label(self.bottomja, text="Nghề nghiệp :", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.job.place(x=400, y=65)
             # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
             # self.jobw.place(x=320, y=30)
             test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên', 'nội trợ', 'kinh doanh','nhân viên văn phòng', 'kế toán')
 
-            self.enter = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=25,textvariable=n)
+            self.enter = AutocompleteEntry(self.bottomja, font=('arial 14 bold'), width=25,textvariable=n)
             self.enter.set_completion_list(test_list)
             self.enter.place(x=495, y=65)
 
-            self.gt = Label(self.bottom, text="Giới tính        :", font=('arial 10 bold'), fg='black',
+            self.gt = Label(self.bottomja, text="Giới tính        :", font=('arial 10 bold'), fg='black',
                                 bg='lightblue')
             self.gt.place(x=400, y=100)
 
-            self.gt_b = Entry(self.bottom, font=('arial 14 bold'), width=25)
+            self.gt_b = Entry(self.bottomja, font=('arial 14 bold'), width=25)
             self.gt_b.place(x=495, y=100)
 
-            self.gt = Label(self.bottom, text="Giới tính        :", font=('arial 10 bold'), fg='black',
+            self.gt = Label(self.bottomja, text="Giới tính        :", font=('arial 10 bold'), fg='black',
                             bg='lightblue')
             self.gt.place(x=400, y=135)
 
-            self.gt_b = Entry(self.bottom, font=('arial 14 bold'), width=25)
+            self.gt_b = Entry(self.bottomja, font=('arial 14 bold'), width=25)
             self.gt_b.place(x=495, y=135)
 
             self.scrollbarx = Scrollbar(self.RightForm, orient=HORIZONTAL)
@@ -936,6 +966,23 @@ class Application:
             conn.close()
             self.logic4 = 2
 
+        if (self.logic2 == 2):
+            self.logic2 = 1
+            self.bottomtk.destroy()
+            self.bottom2tk.destroy()
+
+        if (self.logic1 == 2):
+            self.logic4 = 1
+            self.bottom.destroy()
+            self.bottom2.destroy()
+
+        if (self.logic3 == 2):
+            self.logic3 = 1
+            self.bottomcd.destroy()
+
+
+
+
     def Deletedata(self):
 
         conn = sqlite3.connect("db_member.db")
@@ -960,24 +1007,38 @@ class Application:
         conn = sqlite3.connect("db_member.db")
         cursor = conn.cursor()
 
-        if self.logic1 == 1 or self.name_p.get() == '' or self.adr_p.get() == '' or self.y_b.get() == '' or self.jobw.get() == '' or self.stom.get() == '' or self.nbh.get() == '' or c.get() == '' or self.telw.get() == '':
+        if self.logic1 == 1 or self.hoten_p.get() == '' or self.sdtw.get() == '' or self.d_ung_b.get() == '' or self.tsb_b.get() == '' :
             tkinter.messagebox.showinfo("Error", "Điền đầy đủ thông tin bệnh nhân.")
         else:
 
-            cursor.execute('INSERT INTO member (name, address, age, job, symptom,sbh,sex,tel ) VALUES(?,?,?,?,?,?,?,?)',
+            cursor.execute('INSERT INTO member (Ten benh nhan, Dien thoai, Nghe nghiep, Nam sinh, Gioi tinh,Nhom mau,Di truyen,'
+                           'Bam sinh,Tien su benh,Benh hay mac,Di ung,Dia chi,So bao hiem,Ghi chu,Thoi quen SH,lich su KCB,'
+                           'Ph.do ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                            (
-                               self.name_p.get(), self.adr_p.get(), self.y_b.get(), self.jobw.get(), self.stom.get(),
-                               self.nbh.get(),
-                               c.get(), self.telw.get()))
+                               self.hoten_p.get(), self.sdtw.get(), self.nghenghiep.get(), self.nam_b.get(), self.gt_b.get(),
+                               self.nm_b.get(),self.ditruyen_b.get(), self.bamsinh_b.get(), self.tsb_b.get(),self.bhmac_m.get()
+                               ,self.d_ung_b.get(),self.diachi_p.get(),self.nbh.get(),self.ghich.get(),self.thoiquen_b.get(),
+                               self.lsk_b.get(),self.ppdk_b.get()  ))
             conn.commit()
-            self.name_p.delete(0, END)
-            self.adr_p.delete(0, END)
-            self.y_b.delete(0, END)
-            self.jobw.delete(0, END)
-            self.stom.delete(0, END)
+            self.hoten_p.delete(0, END)
+            self.sdtw.delete(0, END)
+            self.nghenghiep.delete(0, END)
+            self.nam_b.delete(0, END)
+            self.gt_b.delete(0, END)
+            self.nm_b.delete(0, END)
+            self.ditruyen_b.delete(0, END)
+            self.bamsinh_b.delete(0, END)
+            self.bhmac_m.delete(0, END)
+            self.tsb_b.delete(0, END)
+            self.d_ung_b.delete(0, END)
+            self.diachi_p.delete(0, END)
             self.nbh.delete(0, END)
-            self.telw.delete(0, END)
-            self.endoscopy()
+            self.ghich.delete(0, END)
+            self.thoiquen_b.delete(0, END)
+            self.lsk_b.delete(0, END)
+            self.ppdk_b.delete(0, END)
+
+            # self.endoscopy()
             # textbox insert
             # tkinter.messagebox.showinfo("Success", "Successfully added to the database")
 
@@ -988,9 +1049,9 @@ class Application:
         # self.bottom1.destroy()
         self.bottom2.destroy()
         self.logic1 = 1
-        # self.logic2 = 1
-        # self.logic3 = 1
-        # self.logic4 = 1
+        self.logic2 = 1
+        self.logic3 = 1
+        self.logic4 = 1
 
     def delete_text(self, *args, **kwargs):
 

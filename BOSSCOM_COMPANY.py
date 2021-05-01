@@ -229,6 +229,7 @@ class Application:
         # self.add_to_cart()
 
         if (self.logic1 == 1):
+            #self.bottom2.destroy()
 
             self.bottom = Frame(root, width=vi3, height=250)#, bg='lightblue')
             # self.bottom.pack(side=TOP)
@@ -354,12 +355,14 @@ class Application:
 
             self.bhmac = Label(self.bottom, text="Bệnh hay mắc:", font=('arial 10 bold'), fg='black', bg='lightblue')
             self.bhmac.place(x=560, y=65)
-            # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
-            # self.jobw.place(x=320, y=30)
-            test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên','nội trợ', 'kinh doanh', 'nhân viên văn phòng', 'kế toán')
-
-            self.bhmac_m = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10, textvariable=n)
-            self.bhmac_m.set_completion_list(test_list)
+            # # self.jobw = Entry(self.bottom, font=('arial 20 bold'), width=18)
+            # # self.jobw.place(x=320, y=30)
+            # test_list = ('tự do', 'sinh viên', 'học sinh', 'nông dân', 'bác sĩ', 'kĩ sư', 'công nhân', 'kĩ sư', 'giáo viên','nội trợ', 'kinh doanh', 'nhân viên văn phòng', 'kế toán')
+            #
+            # self.bhmac_m = AutocompleteEntry(self.bottom, font=('arial 14 bold'), width=10, textvariable=n)
+            # self.bhmac_m.set_completion_list(test_list)
+            # self.bhmac_m.place(x=660, y=65)
+            self.bhmac_m  = Entry(self.bottom, font=('arial 14 bold'), width=10)
             self.bhmac_m.place(x=660, y=65)
 
             self.d_ung = Label(self.bottom, text="Dị ứng     :", font=('arial 10 bold'), fg='black',
@@ -670,6 +673,7 @@ class Application:
             self.logic1 = 1
             self.bottom.destroy()
             self.bottom2.destroy()
+
         if (self.logic3 == 2):
             self.logic3 = 1
             self.bottomcd.destroy()
@@ -837,7 +841,7 @@ class Application:
 
             load = Image.open("icon/nen.JPG")
             render = ImageTk.PhotoImage(load)
-            img = Label(self.bottom2, image=render)
+            img = Label(self.bottom2ja, image=render)
             img.image = render
             img.place(x=0, y=0)
 
@@ -848,7 +852,7 @@ class Application:
             self.RightForm = Frame(self.MidFrame, width=vi3)
             self.RightForm.pack(side=RIGHT)
 
-            img = Label(self.bottom, image=render)
+            img = Label(self.bottomja, image=render)
             img.image = render
             img.place(x=0, y=0)
 
@@ -972,7 +976,7 @@ class Application:
             self.bottom2tk.destroy()
 
         if (self.logic1 == 2):
-            self.logic4 = 1
+            self.logic1 = 1
             self.bottom.destroy()
             self.bottom2.destroy()
 
@@ -1010,16 +1014,74 @@ class Application:
         if self.logic1 == 1 or self.hoten_p.get() == '' or self.sdtw.get() == '' or self.d_ung_b.get() == '' or self.tsb_b.get() == '' :
             tkinter.messagebox.showinfo("Error", "Điền đầy đủ thông tin bệnh nhân.")
         else:
-
-            cursor.execute('INSERT INTO member (Ten benh nhan, Dien thoai, Nghe nghiep, Nam sinh, Gioi tinh,Nhom mau,Di truyen,'
-                           'Bam sinh,Tien su benh,Benh hay mac,Di ung,Dia chi,So bao hiem,Ghi chu,Thoi quen SH,lich su KCB,'
-                           'Ph.do ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-                           (
-                               self.hoten_p.get(), self.sdtw.get(), self.nghenghiep.get(), self.nam_b.get(), self.gt_b.get(),
-                               self.nm_b.get(),self.ditruyen_b.get(), self.bamsinh_b.get(), self.tsb_b.get(),self.bhmac_m.get()
-                               ,self.d_ung_b.get(),self.diachi_p.get(),self.nbh.get(),self.ghich.get(),self.thoiquen_b.get(),
-                               self.lsk_b.get(),self.ppdk_b.get()  ))
+# #Diung,Diachi,Sobaohiem,Ghichu,ThoiquenSH,lichsuKCB,Ph.do
+#             cursor.execute('INSERT INTO member (Tenbenhnhan,Dienthoai,Nghenghiep,Namsinh,Gioitinh,Nhommau,Ditruyen,Bamsinh,Tiensubenh,Benhhaymac) VALUES(?,?,?,?,?,?,?,?,?,?,?)',( self.hoten_p.get(), self.sdtw.get(), self.nghenghiep.get(), self.nam_b.get(), self.gt_b.get(),
+#                                self.nm_b.get(),self.ditruyen_b.get(), self.bamsinh_b.get(), self.tsb_b.get(),self.bhmac_m.get() ))
+            cursor.execute('INSERT INTO member (Tenbenhnhan,Dienthoai,Nghenghiep,Namsinh,Gioitinh,Nhommau,Ditruyen,Bamsinh,Tiensubenh,Benhhaymac,Diung,Diachi,Sobaohiem,Ghichu,ThoiquenSH,lichsuKCB,Phacdo) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                           (self.hoten_p.get(), self.sdtw.get(), self.nghenghiep.get() ,self.nam_b.get(), self.gt_b.get(),self.nm_b.get(),self.ditruyen_b.get(), self.bamsinh_b.get(),
+                            self.tsb_b.get(),self.bhmac_m.get(),self.d_ung_b.get(),self.diachi_p.get(),self.nbh.get(),self.ghich.get(),self.thoiquen_b.get(),self.lsk_b.get(),self.ppdk_b.get()))
             conn.commit()
+
+
+            self.bottom2.destroy()
+            self.bottom2 = Frame(root, width=vi3, height=in6, bg='lightblue')
+            self.bottom2.place(x=vi4, y=vi1+310)
+
+            load = Image.open("icon/nen.JPG")
+            render = ImageTk.PhotoImage(load)
+            img = Label(self.bottom2, image=render)
+            img.image = render
+            img.place(x=0, y=0)
+
+            self.Top = Frame(self.bottom2, width=vi3, bd=2, relief=SOLID)
+            self.Top.pack(side=TOP)
+            self.MidFrame = Frame(self.bottom2, width=vi3)
+            self.MidFrame.pack(side=TOP)
+            self.RightForm = Frame(self.MidFrame, width=vi3)
+            self.RightForm.pack(side=RIGHT)
+
+            self.scrollbarx = Scrollbar(self.RightForm, orient=HORIZONTAL)
+            self.scrollbary = Scrollbar(self.RightForm, orient=VERTICAL)
+            self.tree = ttk.Treeview(self.RightForm, columns=("TT", "Tên bệnh nhân","Điện Thoại",  "Nghề nghiệp",  "Năm sinh","Bệnh án", "Nội Soi", "Chẩn Đoán", "Ngày Khám", "Chọn"),
+                                     height=in7,selectmode="extended", yscrollcommand=self.scrollbary.set, xscrollcommand=self.scrollbarx.set)
+            self.scrollbary.config(command=self.tree.yview)
+            self.scrollbary.pack(side=RIGHT, fill=Y)
+            self.scrollbarx.config(command=self.tree.xview)
+            self.scrollbarx.pack(side=TOP, fill=X)
+
+            self.tree.column('#0', stretch=NO, minwidth=0, width=0)
+            self.tree.column('#1', stretch=NO, minwidth=0, width=in1)
+            self.tree.column('#2', stretch=NO, minwidth=0, width=in2)
+            self.tree.column('#3', stretch=NO, minwidth=0, width=in3)
+            self.tree.column('#4', stretch=NO, minwidth=0, width=in4)
+            self.tree.column('#5', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#6', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#7', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#8', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#9', stretch=NO, minwidth=0, width=in5)
+            self.tree.column('#10', stretch=NO, minwidth=0, width=in5)
+
+            self.tree.pack()
+            self.tree.heading('TT', text="TT", anchor=W)
+            self.tree.heading('Tên bệnh nhân', text="Tên bệnh nhân", anchor=W)
+            self.tree.heading('Điện Thoại', text="Điện Thoại", anchor=W)
+            self.tree.heading('Nghề nghiệp', text="Nghề nghiệp", anchor=W)
+            self.tree.heading('Năm sinh', text="Năm sinh", anchor=W)
+            self.tree.heading('Bệnh án', text="Bệnh án", anchor=W)
+            self.tree.heading('Nội Soi', text="Nội Soi", anchor=W)
+            self.tree.heading('Chẩn Đoán', text="Chẩn Đoán", anchor=W)
+            self.tree.heading('Ngày Khám', text="Ngày Khám", anchor=W)
+            self.tree.heading('Chọn', text="Chọn", anchor=W)
+
+            conn = sqlite3.connect("db_member.db")
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM `member`")
+            fetch = cursor.fetchall()
+            for data in fetch:
+                self.tree.insert('', 'end', values=(data))
+            cursor.close()
+            conn.close()
+
             self.hoten_p.delete(0, END)
             self.sdtw.delete(0, END)
             self.nghenghiep.delete(0, END)
